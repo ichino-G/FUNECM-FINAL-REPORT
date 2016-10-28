@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  28 OCT 2016 15:02
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  28 OCT 2016 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -448,12 +448,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2795 strings out of 493693
- 33015 string characters out of 6152776
+ 2798 strings out of 493693
+ 33039 string characters out of 6152776
  102555 words of memory out of 5000000
- 6306 multiletter control sequences out of 15000+600000
+ 6309 multiletter control sequences out of 15000+600000
  19661 words of font info for 92 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  27i,13n,26p,851b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (23 pages, 79548 bytes).
+Output written on report.dvi (23 pages, 80344 bytes).
