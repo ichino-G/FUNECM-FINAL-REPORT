@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  28 OCT 2016 17:13
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  28 OCT 2016 17:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -420,19 +420,19 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ] [13]
 第6章
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 564.
+(Font)              scaled to size 6.72699pt on input line 566.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 570.
+(Font)              scaled to size 5.76599pt on input line 572.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 570.
+(Font)              scaled to size 5.76599pt on input line 572.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 570.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 572.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 570.
+(Font)              scaled to size 7.68799pt on input line 572.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 570.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 572.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 570.
+(Font)              scaled to size 7.68799pt on input line 572.
 [14
 
 ] [15]
@@ -453,7 +453,7 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 649.
+(Font)              scaled to size 4.805pt on input line 651.
  [20
 
 ] (./report.aux)
@@ -470,4 +470,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  27i,13n,26p,851b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (25 pages, 81624 bytes).
+Output written on report.dvi (25 pages, 81704 bytes).
