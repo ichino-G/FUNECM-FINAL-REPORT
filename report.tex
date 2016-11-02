@@ -464,6 +464,36 @@ $(X,Y,Z) \rightarrow (X,Y,T,Z)$
 
 \subsubsection*{基本的なStage2の実装}
 
+\begin{algorithm}[H]                   
+\caption{Basic ECM Algorithm}
+\label{alg:B}                          
+\begin{algorithmic}                  
+\REQUIRE $N$ is composite number, $E$ is elliptic curve, $P = (x_0, y_0, Z_0) \in E(Z_n)$ is initial point, $B_1$ is smoothness bound for Phase 1, $B_2$ is smoothness bound for Phase 2, $B2 \ge B1.$
+\ENSURE $q$ is factor of $N$, $1 \le q \leq N$, or FAIL.
+\STATE \bfseries{Phase 1.}
+\STATE $k \gets \prod_{p \leq B_1} p^{\log{p} B_1}$
+\STATE $Q_0 \gets kP_0$
+\STATE $q \gets \gcd(z_{Q_0},N)$
+\IF {$q \ge 1$}
+\STATE return $q$
+\ELSE
+\STATE go to Phase 2
+\ENDIF
+\STATE \bfseries{Phase 2.}
+\STATE $d \gets 1$
+\FOR {each prime $p = B_1$ to $B_2$} 
+\STATE $(x_{pQ_0},y_{pQ_0},z_{pQ_0}) \gets pQ_0$
+\STATE $d \gets d*Z_{pQ_0} (mod N)$
+\ENDFOR
+\STATE $q \gets \gcd(d,N)$
+\IF {$q \ge 1$}
+\STATE return $q$
+\ELSE
+\STATE return FAIL
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
 \bunseki{亀谷浩也}
 
 \subsubsection*{Montgomely ladderを利用したStage2の提案}
