@@ -220,16 +220,6 @@ ECM-NETにランクインするためには，巨大な素因数を発見しな�
  \item[Euclidの互除法]\mbox{}\\
 		$自然数a，b(a≧b)に対して以下の操作を繰り返し余りが0になるまで行うことによってa，bの最小公倍数を求めるものである．$
 
-%\begin{center}
-%	$a÷b=q1*b+r1 (q1:aをbでわった時の商，r1:aをbでわった時の余り)$
-%
-%		$b÷r1=q2*r1+r2 (q2:bをr1でわった時の商，r2:bをr1でわった時の余り)$
-%
-%		$r1÷r2=q3*r2+r3 (q1:r1をr2でわった時の商，r1:r1をr2でわった時の余り)$
-%
-%		$rn-2÷rn-1=qn (q2:rn-2をrn-1でわった時の商)　ここで操作終了$
-%	\end{center}
-%
 \begin{algorithm}[h]                   
 \caption{Euclidean Algorithm}
 \label{alg E}                          
@@ -327,7 +317,7 @@ $(X,Y,Z)=(\lambda X, \lambda Y, \lambda Z)=$$(\displaystyle \frac{X}{Z}$,$\displ
 
 \begin{algorithm}[h]                   
 \caption{Atkin-Morain ECPP Algorithm}
-\label{alg E}                          
+\label{alg ECPP}                          
 \begin{algorithmic}                  
 \REQUIRE $\alpha,\beta,s,t,\in \mathbb{N}$
 \ENSURE $(X,Y)$
@@ -511,6 +501,9 @@ $(X,Y,Z) \rightarrow (X,Y,T,Z)$
  \item 前年度のECMプログラムの実装上のミス（\ref{sec:alg1}）を改善した．
  \item ECMプログラム改善のために，新たなアルゴリズム（\ref{sec:alg2}, \ref{sec:alg3}）の実装を行った．
  \item 中間発表会に向けて，プログラミング班のプレゼンテーション資料・原稿を作成した．
+ \item Stage2の解読・実装をいち早く進めた．
+ \item 解析班の作業を助けるためのマクロを作成した．
+ \item 広報班に協力し，ウェブページの作成の手助けをした．
  \end{enumerate}
  
 \item 山下哲平（理論班）
@@ -521,6 +514,8 @@ $(X,Y,Z) \rightarrow (X,Y,T,Z)$
  \item 伊藤・駒ヶ嶺と協力してAtkin-Morain ECPPアルゴリズムの理解に取り組んだ．
  \item 中間発表会に向けて，「背景」の部分についてポスターをを作成した．
  \item プログラミング班の要請でプログラムの速度について簡易的な検証を行った．
+ \item 伊藤と協力してウェブページの基本的な要素を作成した．
+ \item 最終報告書の広報班ページを作成した．
  \end{enumerate}
  
 \item 伊藤有輝（理論班）
@@ -531,6 +526,8 @@ $(X,Y,Z) \rightarrow (X,Y,T,Z)$
  \item 駒ヶ嶺・山下と協力し，Edwards Curveを利用したECMアルゴリズムの読解を行った．
  \item 駒ヶ嶺・山下と協力し，Atkin-Morain ECPPアルゴリズムの理解に取り組み，プログラミング班に提案を行った．
  \item 中間発表会に向けて，「理論班」の部分のプレゼンテーション資料を作成した．
+ \item 源・池野と協力し，Githubの使い方を理解して広報班に伝えた．
+ \item 山下と協力してウェブページの基本的な要素を作成した．
  \end{enumerate}
  
 \item 駒ヶ嶺壮（理論班）
@@ -541,6 +538,7 @@ $(X,Y,Z) \rightarrow (X,Y,T,Z)$
  \item 山下・伊藤と協力してEdwards Curveを利用したECMアルゴリズムの読解を行った．
  \item 山下・伊藤と協力してAtkin-Morain ECPPアルゴリズムの理解に取り組んだ．
  \item 中間発表会に向けて，「理論班」の部分のポスターを作成した．
+ \item 広報班のウェブページ作成のため，過去の作業ログを見直し，まとめた．
  \end{enumerate}
  
 \item 橋本和典（理論班）
@@ -552,6 +550,8 @@ $(X,Y,Z) \rightarrow (X,Y,T,Z)$
  \item 中間発表会に向けて，千葉・亀谷と協力して来るであろう質問を予測して対策を行った．
  \item ECMの改善に直結するような文献を探した。
  \item 中間発表会に向けて、ポスターの「理論班」の章を英訳した。
+ \item 理論班で検証を行う際に，管理者として中心となって作業した．
+ \item 行った検証の結果をまとめ，グラフ化して見やすくした．
  \end{enumerate}
  
 \item 千葉大樹（理論班）
@@ -562,6 +562,7 @@ $(X,Y,Z) \rightarrow (X,Y,T,Z)$
  \item 中間発表会に向けて，ECMについての英論文から重要な単語を抜粋し解説した．
  \item 中間発表会に向けて，亀谷・橋本と協力して来るであろう質問を予測して対策を行った．
  \item 中間発表会に向けて、ポスターの「プログラミング班」の章を英訳した。
+ \item 理論班で検証を行う際に，実際にプログラムを動かし，データを全体に共有した．
  \end{enumerate}
  
 \item 亀谷浩也（理論班）
@@ -572,6 +573,7 @@ $(X,Y,Z) \rightarrow (X,Y,T,Z)$
  \item 橋本と協力して，基礎学習を簡潔にまとめた解説ノートを作成した．
  \item 中間発表会に向けて，橋本・千葉と協力して来るであろう質問を予測して対策を行った．
  \item 中間発表会に向けて、ポスターの「概要・基礎学習」の章を英訳した。
+ \item 理論班で検証を行う際に，データの管理やまとめを手伝い，橋本の補佐として活動した．
  \end{enumerate}
  
 \end{itemize}
