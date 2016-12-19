@@ -24,23 +24,24 @@
 \contentsline {subsection}{\numberline {4.1.1}プログラムの検証}{11}
 \contentsline {section}{\numberline {4.2}プログラミング班}{11}
 \contentsline {subsection}{\numberline {4.2.1}Atkin-Morain ECPPの実装}{11}
-\contentsline {subsection}{\numberline {4.2.2}新しい改良法の調査}{11}
-\contentsline {subsection}{\numberline {4.2.3}Stage2}{11}
+\contentsline {subsection}{\numberline {4.2.2}スカラー倍算の高速化}{11}
+\contentsline {subsection}{\numberline {4.2.3}新しい改良法の調査}{11}
+\contentsline {subsection}{\numberline {4.2.4}Stage2}{12}
 \contentsline {section}{\numberline {4.3}広報班}{12}
-\contentsline {subsection}{\numberline {4.3.1}ウェブページの作成}{12}
-\contentsline {chapter}{\numberline {第5章}プロジェクト内のインターワーキング}{13}
-\contentsline {chapter}{\numberline {第6章}前期活動成果}{15}
-\contentsline {section}{\numberline {6.1}理論班}{15}
-\contentsline {section}{\numberline {6.2}プログラミング班}{15}
-\contentsline {chapter}{\numberline {第7章}後期活動成果}{17}
-\contentsline {section}{\numberline {7.1}理論班}{17}
-\contentsline {section}{\numberline {7.2}プログラム班}{17}
-\contentsline {section}{\numberline {7.3}広報班}{17}
-\contentsline {chapter}{\numberline {第8章}まとめ}{18}
-\contentsline {section}{\numberline {8.1}前期活動結果}{18}
-\contentsline {section}{\numberline {8.2}後期の展望}{18}
-\contentsline {section}{\numberline {8.3}後期活動結果}{18}
-\contentsline {section}{\numberline {8.4}全体を通して}{18}
-\contentsline {chapter}{\numberline {付録A}新規習得技術}{19}
-\contentsline {chapter}{\numberline {付録B}相互評価}{20}
-\contentsline {chapter}{参考文献}{21}
+\contentsline {subsection}{\numberline {4.3.1}ウェブページの作成}{13}
+\contentsline {chapter}{\numberline {第5章}プロジェクト内のインターワーキング}{14}
+\contentsline {chapter}{\numberline {第6章}前期活動成果}{16}
+\contentsline {section}{\numberline {6.1}理論班}{16}
+\contentsline {section}{\numberline {6.2}プログラミング班}{16}
+\contentsline {chapter}{\numberline {第7章}後期活動成果}{18}
+\contentsline {section}{\numberline {7.1}理論班}{18}
+\contentsline {section}{\numberline {7.2}プログラム班}{18}
+\contentsline {section}{\numberline {7.3}広報班}{18}
+\contentsline {chapter}{\numberline {第8章}まとめ}{19}
+\contentsline {section}{\numberline {8.1}前期活動結果}{19}
+\contentsline {section}{\numberline {8.2}後期の展望}{19}
+\contentsline {section}{\numberline {8.3}後期活動結果}{19}
+\contentsline {section}{\numberline {8.4}全体を通して}{19}
+\contentsline {chapter}{\numberline {付録A}新規習得技術}{20}
+\contentsline {chapter}{\numberline {付録B}相互評価}{21}
+\contentsline {chapter}{参考文献}{22}
