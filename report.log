@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  6 JAN 2017 17:23
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  6 JAN 2017 17:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -338,21 +338,21 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 
 ])
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 21.
+(Font)              scaled to size 19.9311pt on input line 20.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 21.
+(Font)              scaled to size 19.9311pt on input line 20.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 21.
+(Font)              scaled to size 19.9311pt on input line 20.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 21.
+(Font)              scaled to size 19.9311pt on input line 20.
 LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 21.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 21.
+(Font)              scaled to size 19.9311pt on input line 20.
 LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 21.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 21.
+(Font)              scaled to size 19.9311pt on input line 20.
  (./report.toc
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 2.
@@ -494,4 +494,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  29i,13n,26p,890b,518s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (37 pages, 128168 bytes).
+Output written on report.dvi (37 pages, 129132 bytes).
