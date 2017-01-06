@@ -13,8 +13,623 @@
 %前付け
 \frontmatter
 
+<<<<<<< HEAD
 %概要
 \input{abstract.tex}
+=======
+% 和文概要
+\begin{jabstract}
+　私たちのプロジェクトの目的は，より大きな桁数の素因数を見つけることである．素因数分解は，約 30年前から重要になってきている．その理由は，RSA暗号にある．RSA暗号は，安全性を2つの大きな素因数からなる合成数の素因数分解が難しいことに依存している．しかし，技術の発展とともに素因数分解が従来よりも容易になってきてしまっているため，RSA暗号が破られる可能性が高くなっている．そこで今注目されているのが楕円曲線暗号である．楕円曲線暗号は，RSA暗号と同じ鍵長で高い安全性を保障することができる．そこで私たちは素因数分解をより簡単なものとすることで，RSA暗号から楕円曲線暗号を主流とさせたい．
+
+　私たちは，大きな素因数の発見のために，色々な文献を読んでその中から素因数分解を行うプログラムの改良法を発見する理論班と，それらの理論を利用して実際にプログラムの実装・改良を行い，プログラムを高速化させるプログラム班に分かれて活動を行った．
+
+　理論班は，素因数分解がより高速に行われるようなアルゴリズムの発見を目標とした．楕円曲線法のプログラムは点の加算の繰り返しで行われるため，加算の計算コストを減らすことで高速な計算を可能とするための活動を行った．Atkin Morain ECPPを利用することで，従来の楕円曲線法よりも計算コストを削減できることを発見した．
+
+　プログラム班は，前年度に作成された素因数分解プログラムをさらに高速化することを目標とした．前年度と同様に大きな数を扱うために，任意精度演算ライブラリのGMPを使用した．また，プログラムの並列実行を行うために，並列プログラムの為のAPI であるOpenMPを導入した．前年度に実装されたエドワーズ曲線よりも効率よく計算を行うため，extended twisted Edwards coordinatesを実装した．同じ合成数に対してプログラムを実行する際の因数の発見確率をあげるために，Yの値をランダムに設定した．
+
+　また，理論班とプログラム班で情報の交換を行ったり，協力を行ったりなど，2つの班の活動により，素因数分解を高速に行うことができるプログラムが完成した．
+
+
+% 和文キーワード
+\begin{jkeyword}
+素因数分解,楕円曲線法,ECMNET,エドワーズ曲線,射影座標,RSA暗号
+\end{jkeyword}
+\bunseki{山下哲平}
+\end{jabstract}
+
+%英語の概要
+
+\begin{eabstract}
+
+~The goal of our project team is to find prime factor as large as possible. Factorizations in prime numbers have become more important since about thirteen years ago because the difficulty of factorization in prime numbers is related to Internet security. The reason lies in the RSA. The asymmetry of RSA is based on the practical difficulty of factoring the product of two large prime numbers. However, prime factorization is getting to easier by development in technology. Therefore, RSA is less secure compared to previously. That's why Elliptic Curve Cryptography (ECC) is paid more attention than RSA now. ECC ensure safety better than RSA cryptosystem with same key length.Accordingly, we make factorization in prime numbers simplify, we would like to change main cryptosystem from RSA cryptosystem to elliptic curve cryptography.
+
+~In order to find prime factor as large as possible, we divided two groups, one is “theory group” that is to read various literature and to find algorithm of factorizations in prime numbers to calculate faster, the other is “programming group” that is to make program to base on algorithm.
+
+ ~“Theory group” aims to find algorithm of factorizations in prime numbers to calculate faster. The ECM program repeats process of addition law many times over, therefore we reduced calculation. To access Atkin Morain construction, we were successful in calculation faster compared to previously.
+
+~“Programming group” aim to improve program of last year project team faster than before. To treat large number likewise last year, we used arbitrary-precision arithmetic library called GMP. Also, we parallelize the program, we introduce Open MP is API for parallel program. We implement extended twisted Edwards coordinates efficient than Edwards curve implemented last year. Also, we set random Y’s value to raise finding assembly towards same composite numbers.
+ We exchange information and cooperate “theory group” and “programming group”, we made a program that is to perform factorization in prime numbers fast.
+% 英文キーワード
+\begin{ekeyword}
+Elliptic Curve Method, prime factorization, ECMNET, Twisted Edwards Curve, Extended Twisted Edwards Coordinates, RSA cryptosystem
+\end{ekeyword}
+\bunseki{山下哲平}
+\end{eabstract}
+
+\tableofcontents% 目次
+
+\mainmatter% 本文のはじまり
+
+\chapter{背景}
+
+ECM(楕円曲線法)を利用した素因数分解は近年重要になっており，それを利用しECM-NETにランクインすることが私たちの目的である．
+
+\bunseki{駒ヶ嶺壮}
+
+\section{本プロジェクトの背景}
+
+現在インターネットを含む通信での暗号技術においての主流はRSA暗号である．RSA暗号とは公開鍵暗号の一つで，大きな合成数を素因数分解することの難しさを安全性の根拠にした暗号である．しかし，スーパーコンピューターの並行処理能力と計算能力の向上等で鍵長1024ビットのRSA暗号方式は解読される危険性が指摘されるようになった．ここで，今後の暗号技術にはRSAに変わるものとして楕円曲線暗号が使われて始めている．楕円曲線暗号は現在の暗号技術において最も重要とされている手法である．これは，ある楕円曲線における有限体上の楕円曲線の点の加算を用いることにより，RSA暗号と同じ鍵長でより解読が難しくなるからである．ここで私たちはこの楕円曲線暗号の中で核となる楕円曲線を用いた素因数分解のアルゴリズムについて考え，FUN-ECMがECM-NETにランクインを目指すことで函館から楕円曲線，素因数分解，暗号技術の重要性について発信することを目標として掲げた．
+
+\bunseki{山下哲平}
+
+\section{ECM-NETとは}
+
+ECM-NETとは，楕円曲線法を用いて大きい桁数の素因数を見つけることを目的とした競争サイトである．ECM-NETには現在登録されている素因数分解よりも大きな素因数を見つけることで誰でもランクインすることが可能である．
+
+\bunseki{駒ヶ嶺壮}
+
+\section{課題の概要}\label{sec:gaiyou}
+
+FUN-ECMがECM-NETへのランクインを目指すには大きい桁数の素因数を見つけなければいけないことから楕円曲線を用いた素因数分解のプログラムの並列処理と高速化を目指す．また，本プロジェクトの活動をWebサイト等を用いて外部に発信する．
+
+\bunseki{駒ヶ嶺壮}
+
+\chapter{到達目標}
+
+\section{本プロジェクトにおける目的}\label{sec:mokuteki}
+
+FUN-ECMがECM-NETにランクインするためには去年のプログラムをより改善する必要がある．この目標を達成するにあたって，2つの目標を立てることにした．
+
+\bunseki{伊藤有輝}
+
+\subsection{プログラムの高速化}\label{sec:goal1}
+
+ECM-NETにランクインするためには，巨大な素因数を発見しなければならない．巨大な素因数を発見するためには桁数の大きい合成数を素因数分解する必要があるが，それには多大な時間がかかってしまう．また，ECMは1度の試行で素因数を必ず発見できるとは限らず，複数回の試行が必要となる．そのためプログラムの処理を効率の良いアルゴリズムに変更し，処理を高速化させる必要がある．この目標を達成するにあたって，2つの目標を立てることした．
+
+\begin{itemize}
+\item 昨年度のプログラムのアルゴリズムの理解
+\item 昨年度のプログラムの書き換えたものの実装
+\end{itemize}
+
+まず，昨年度のプログラムを高速化するにはアルゴリズムの理解が必要である．また，楕円曲線法では大学までの学習で使用していない数学の概念を使用するため，基礎学習を行う．
+
+\bunseki{伊藤有輝}
+
+\subsection{FUN-ECMの活動発信}\label{sec:goal2}
+
+今年度では，ただランクインを目指すだけでなく，函館から楕円曲線，素因数分解の重要性について発信することに決め，ホームページを設立することとした．
+
+\bunseki{伊藤有輝}
+
+\section{課題達成の為の班分け}
+前年度のプロジェクトでは前期で楕円曲線法についての学習を行い，後期でアルゴリズムの提案・実装を行っていた．しかし，このような日程でプロジェクトを進行していくと以下のような問題が発生した．
+
+\begin{itemize}
+\item 実際にプログラムを実装する期間が少ない
+\item 完成したプログラムを試行する期間が少ない
+\item 巨大な合成数の分解を行いにくい
+\end{itemize}
+
+そのため，本プロジェクトでは5月中旬まで全員で最低限の基礎学習を行い，そこから理論班とプログラミング班の2つに分けて作業を行うこととした．また，後期には広報班を作成し，3つの作業を並行で行うこととした．以下にそれぞれの班の課題について述べる．
+
+\begin{description}
+ \item[理論班]\mbox{}\\ 
+	    ECMについて理解を深め，高速化の新たなアルゴリズムを提案する．
+ \item[プログラミング班]\mbox{}\\
+	    基礎学習や理論班がまとめたアルゴリズムを実装し高速化を行う．
+ \item[広報班]\mbox{}\\
+	    ECMについて理解してもらえるようなWebページの作成をする．
+\end{description}
+\bunseki{伊藤有輝}
+
+\chapter{前期活動内容}
+
+プロジェクトが始まった当初，ほぼ全員楕円曲線についての前提知識がなかったため，昨年も前提知識を身に着けるために使われた全員楕円曲線についての資料を全員で輪読し，理解した．その際，理解できなかったところを由良先生，白勢先生に解説してもらった．それにより，楕円曲線法のアルゴリズムを理解するためにあたっての基礎知識を学んだ．その後，プロジェクト全体をプログラムの高速化につながる理論を探し，学習してアルゴリズムをノートにまとめる理論班，理論班がノートにまとめたアルゴリズムをプログラムに実装するプログラミング班に分けてプロジェクトを進めた．
+
+\bunseki{伊藤有輝}
+
+\section{基礎学習}
+
+去年のプログラムを理解するために5月の中旬まではメンバ全員が教授の指導のもとで楕円曲線法のアルゴリズムや基礎知識ついての基礎学習を行った．具体的な内容は以下の通りである．
+\begin{description}
+ \item[有限体]\mbox{}\\ 
+	    　　$素数pに対し，0からp-1までの整数の集合\mathbb{F}_p=\{0，1，…，p-1\}を有限体と言う．\mathbb{F}_pでは四則演算が可能であり，ECMではこの範囲で考える．$
+ \item[Euclidの互除法]\mbox{}\\
+		$自然数a，b(a≧b)に対して以下の操作を繰り返し余りが0になるまで行うことによってa，bの最小公倍数を求めるものである．$
+
+\begin{algorithm}[h]                   
+\caption{Euclidean Algorithm}
+\label{alg E}                          
+\begin{algorithmic}                  
+\REQUIRE $a,b \in \mathbb{N} , \quad a,b \neq 0,\quad a\ge b$
+\ENSURE $\gcd (a,b)$
+\WHILE {$b \neq 0$}
+\STATE $q \leftarrow a/b$
+\STATE $r \leftarrow a\mod b$
+\STATE $a \leftarrow b$
+\STATE $b \leftarrow r$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+$a,bの最大公約数を\gcd (a,b)と表記できる．$
+	
+ \item[拡張Euclidの互除法]\mbox{}\\
+	$与えられた整数a，b，cに対し，未知数x，yに関する一次方程式ax+by=c$の整数解を求める問題を一次不定方程式という．ここで，$自然数a，bに関する一次不定方程式ax+by=gcd(a，b)を満たす無数の整数x，yは拡張$Euclidの互除法を用いることで効率よく求めることができる．これはEuclidの互除法で行った操作を逆に行うことで解を得る．$gcd(174，69)=3を例にとって考える．$
+
+	\begin{align*} 
+		174/69&=2*69+36 \\
+		69/36&=1*36+33　\\
+		36/33&=1*33+3 \\
+		33/3&=11 	
+ 	\end{align*}
+	となるので
+	\begin{align*} 
+	3&=36-33*1 \\
+	&=36-(69-36*1)*1 \\
+	&=69*(-1)+36*2 \\
+	&=69*(-1)+(174-69*2)*2 \\
+	&=174*2+69*(-5)
+ 	\end{align*}
+
+以上より,$174x+69y=3の解(x,y)=(2,-5)$を得ることができる。有限体$\mathbb{F}_p$において除算$a/b$を計算する場合, $pとb$は互いに素なので, 拡張Euclidの互除法により不定方程式$px + by = 1 の解(x, y)$を求めることができる。このとき$px+ by= 1$となるので, 有限体$\mathbb{F}_p$上では$by = 1となり,両辺をbで割ることで,b^−1 = y$が成立する。したがって$a ÷ b = a×b-1=a × y$と変形することで, 除算を乗算に置き換えて計算できる。プログラムにおいて、除算を乗算に置き換えることは計算量の削減につながるが、今回のプロジェクトではGMPライブラリを用いたことでこれを実装することはなかった。
+
+
+	
+\item[楕円曲線の定義方程式]\mbox{}\\
+	$a,b \in \mathbb{F}_pに対してy^2 = x^3 + ax + bで定義される曲線を素体Fp上の楕円曲線という．$
+
+\item[楕円曲線の加算・2倍算]\mbox{}\\
+	$(加算) 楕円曲線上のある2点P,Qを通る直線をℓとすると,楕円曲線と直線 \ell の3つ目の交点R’(=P×Q)のx軸に関する対称点をRとする。このとき2点P,Qの和をR=P+Qと定義し、楕円曲線の加算という。$
+	
+$(2倍算) 楕円曲線上の1点Pで加算を考えるときは2点P,Pの通る直線(=Pの接線)をℓとして考える。この時、楕円曲線と直線 \ell のP以外の交点のx軸に関する対称点をRとしたとき、R=P+P=2Pとできる。これが楕円曲線の2倍算である。
+$
+	
+\item[楕円曲線のスカラー倍]\mbox{}\\
+	$点Pと整数mを使用して，mP=P+P+P+P+・・・・+P(m個の和)と表すことができる．これを楕円曲線のスカラー倍という．$
+
+\item[楕円曲線法のアルゴリズム ]\mbox{}\\
+	$Nを素因数分解したい合成数とする．\mathbb{Z}/N\mathbb{Z}上で，楕円曲線Eを構成して，点$
+	\begin{equation}
+	P \in E(\mathbb{Z}/N\mathbb{Z})
+	\end{equation}
+	$をとる．初めにPの座標を決めてからEを構成しても良い．$
+	
+	$次に適切なB_1，L=2,3,・・・B_1の最小公倍数とする．LPの計算の過程で生じる点の座標の分母dが\gcd(N,d) \neq 1となるとNの約数を発見できる．$
+	
+	$最期まで\gcd (N,d)=1ならば，EとPを選びなおしてやり直す．適切なB_1を選ぶことで，ECMは高速な素因数分解法になることが知られている．$
+\end{description}
+以上のことを基礎学習として学んだ．以下の章ではに2班に分かれた後の理論班の活動内容を記述する．
+
+\bunseki{橋本和典}
+
+\section{理論班}
+理論班では新たなアルゴリズムを探し，プログラミング班に新たな高速化手法の提案を行った．以下に具体的な内容を述べる．
+
+\subsection{Twisted Edwards Curveの理解}
+ECMの高速化アルゴリズムを実装するにあたって，先人の知恵を得ようと思いインターネットで類似研究の論文を検索し，その論文を解読することによって高速化アルゴリズムをプログラムに導入しようと考えた．その際，Twisted Edwards Curves Revisitedというエドワーズ曲線についての英語の論文が見つかったため，私たちはこの論文を読解することにした．
+
+この論文は，最初に一般的な楕円曲線アルゴリズムより，エドワーズ曲線の方が計算コストは低く，速いスピードで素因数を求めることができるということが説明されており，そのエドワーズ曲線の数学的な理論とプログラム実装のためのアルゴリズムが書かれていた．
+
+エドワーズ曲線については基礎学習で学んでいなかったため，私たちはエドワーズ座標を学習した．その中では射影座標が使用されていた．射影座標とは一般的なの座標(x,y)に対して$x=\frac{X}{Z},y=\frac{Y}{Z}を満たすX,Y,Zを用いて（X,Y,Z）と表す座標であり，射影座標を用いると$ECMアルゴリズムを高速化することができる．具体的な定義は以下の通りである．
+
+\begin{itembox}[l]{射影座標}
+\begin{center}
+$(X,Y,Z)=(\lambda X, \lambda Y, \lambda Z)=$$(\displaystyle \frac{X}{Z}$,$\displaystyle \frac{Y}{Z}$,1) $(Z\neq0)$
+\end{center}
+\end{itembox}
+
+理論班では，この拡張エドワーズ座標の理論を学ぼうとしたが，知識が乏しく，わからない変数が出てきたため，アルゴリズムだけを理解し，定義，証明などの理論を理解することはあきらめた．
+
+\bunseki{伊藤有輝}
+
+\subsection{Atkin-Morain ECPP}
+次にAtkin-Morain ECPPというECMの初期座標を決定するアルゴリズムの理解に励んだ.昨年度まではECMの初期座標として(2,2)を用いて,素因数分解が完了できなければ(2,3),(2,4)…といったようにY座標を1ずつ動かすようにしていたが,今年度では少しでもを因数を見つける確率を上げることが見込めるAtkin-Morain ECPPを理解することにした.Atkin-Morain ECPPでは新たな楕円曲線$T^2=S^3-8S-32の点を用意し,(S,T)=(12,40)に対してn(S,T)の座標(s,t)$を用いて以下を定める.
+
+\begin{center}
+\begin{equation}
+\alpha =\cfrac{(s-9)+1}{t+25}  ,  \beta = \cfrac{2\alpha (4\alpha +1)}{8\alpha^2-1}
+\end{equation}
+\end{center}
+これらを用いることによって、素因数分解に用いる楕円曲線の初期座標を求めることができる。具体的には以下の通りである。
+
+\begin{algorithm}[h]                   
+\caption{Atkin-Morain ECPP Algorithm}
+\label{alg ECPP}                          
+\begin{algorithmic}                  
+\REQUIRE $\alpha,\beta,s,t,\in \mathbb{N}$
+\ENSURE $(X,Y)$
+\STATE $(s,t) \leftarrow(12,40)$
+\WHILE {Prime factor is not found}
+\STATE $\alpha \leftarrow \cfrac{(s-9)+1}{t+25}$
+\STATE $\beta \leftarrow \cfrac{2\alpha (4\alpha +1)}{8\alpha^2-1}$
+\STATE $d \leftarrow \cfrac{2(2\beta -1)^2-1}{(2\beta -1)^4}$
+\STATE $E:x^2+y^2=1+dx^2y^2$
+\STATE $X \leftarrow \cfrac{(2\beta -1)(4\beta -3)}{6\beta -4}$
+\STATE $Y \leftarrow \cfrac{(2\beta-1)(t^2+50t-2s^3+27s^2-104)}{(t+3s-2)(t+s+16)}$
+\STATE Run ECM with $E:x^2+y^2=1+dx^2y^2$ and $(X,Y)$
+\STATE $(s,t) \leftarrow 2(s,t)$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+このアルゴリズムを用いると具体的には従来の1.5倍ほど高速化できる見込みであるが、これは論文上のデータである。したがって、後期はプログラム班が実装し、どのくらい速くなるかどうかを検証したいと考えている。
+
+\bunseki{伊藤有輝}
+
+\section{プログラミング班}
+プログラミング班では，昨年度のFUN-ECMプロジェクトで作成したECMプログラムをさらに高速化するために，4月から5月にかけて行った全体での基礎学習や，理論班がまとめた理論・アルゴリズムを元にプログラムを変更した．主に，射影座標やextended twisted Edwards coordinatesを用いて乗算・除算を減らすことによって高速化を図った．また，前年度のプログラムの不具合等も改善した．具体的には以下の通りである．
+
+\bunseki{源啓多}
+
+\subsection{座標変換の際の冗長なコストの削減}\label{sec:alg1}
+前年度のプロジェクトで作成されたECMプログラムでは，スカラー倍をする際の座標をアフィン座標から射影座標に変換することで計算効率を上昇させていた．このアフィン座標から射影座標への変換は複数回呼び出される為，ECMプログラムの計算コストに影響する．Algorithm \ref{alg:algP}にアルゴリズムを記す．
+
+\begin{algorithm}[H]
+\caption{Affine Coordinates to Projective Coordinates (Past ver.)}
+\label{alg:algP}                          
+\begin{algorithmic}                  
+\REQUIRE $(AX,AY)$ is Affine, $(PX,PY,PZ)$ is Projective, $N \ge 2 $
+\ENSURE $(PX,PY,PZ)$
+\STATE $Z \leftarrow Random(0 \le Z < N)$
+\IF {$Z=0$}
+\STATE $Z \leftarrow 1$
+\ENDIF
+\STATE $AX \leftarrow AX \times Z$
+\STATE $AY \leftarrow AY \times Z$
+\STATE $AX \leftarrow AX \mod N$
+\STATE $AY \leftarrow AY \mod N$
+\STATE $(PX,PY,PZ) \Leftarrow (AX,AY,Z)$
+\end{algorithmic}
+\end{algorithm}
+
+
+前述の冗長部分として乗算が2回と$mod$の計算が2回発生している．プログラミング班では，$Z$の値を1に設定することで乗算と$mod$の計算を省略できると考えた．プログラムを一通り読み直し，問題が発生しないことを確認したのち，新たなアルゴリズムを実装した．Algorithm \ref{alg:algN}に新しいアルゴリズムを示す．
+
+\begin{algorithm}[H]                   
+\caption{Affine Coordinates to Projective Coordinates (New ver.)}
+\label{alg:algN}                          
+\begin{algorithmic}                  
+\REQUIRE $(AX,AY)$ is Affine, $(PX,PY,PZ)$ is Projective, $N \le 2 $
+\ENSURE $(PX,PY,PZ)$
+\STATE $Z \leftarrow 1$
+\STATE $(PX,PY,PZ) \Leftarrow (AX,AY,Z)$
+\end{algorithmic}
+\end{algorithm}
+
+\bunseki{源啓多}
+
+\subsection{Extended twisted Edwards coordinatesの実装}\label{sec:alg2}
+前年度のプロジェクトで作成されたECMプログラムでは，twisted Edwards curveを利用している．今回のプログラミング班ではさらにextended twisted Edwards coordinatesを用いた．extended twisted Edwards coordiantesはエドワーズ曲線のスカラー倍を高速化するための座標系であり，以下で定義される補助座標Tを加えた4つの座標でスカラー倍を行う．
+
+\begin{itembox}[l]{Extended twisted Edwards coordinates}
+射影座標（X,Y,Z）をに対し，T=$\cfrac{XY}{Z}$という補助座標を加える．これをExtended twisted Edwards coordinatesと呼ぶ．
+\begin{center}
+$(X,Y,Z) \rightarrow (X,Y,T,Z)$
+\end{center}
+\end{itembox}
+\bunseki{源啓多}
+
+\subsection{楕円曲線の生成法の変更}\label{sec:alg3}
+楕円曲線法を利用したECMプログラムは，楕円曲線を生成しその座標を利用し素因数分解を行うプログラムである．また，本プロジェクトで素因数分解しようと試みている合成数は200桁前後のため，1度の試行では素因数分解できないことが多くある．よって，同じ合成数に対して複数回の試行をすることを想定してプログラムを作成する必要がある．前年度のプログラムでは，楕円曲線を生成する際に，Y値をfor文のカウンタを利用して1から順に決めるアルゴリズムを採用していた．そのため，複数回試行した際に同じ曲線を使用してしまうことが多くあり，効率が落ちていたと仮定した．そこで曲線を生成する際に使用しているY値に乱数を使用することとした．
+
+\bunseki{源啓多}
+
+\section{中間発表}
+
+\subsection{準備}
+\begin{description}
+\item[ポスター]\mbox{}\\
+初めに，前年度のプロジェクトで作成されたポスターを参考に構成を決定した．次に，概要，基礎学習，理論班，プログラミング班の4つの項目に分け，作成を分担した．ポスターの作成には「Microsoft PowerPoint」というソフトウェアを使用した．ポスターが完成次第，理論班・プログラミング班でレビューを行い，誤字脱字等を修正した．しかしポスターレビューが不十分だったため，最終的に完成したポスターで誤植が見つかってしまった．
+
+\bunseki{亀谷浩也}
+
+\item[プレゼンテーション資料]\mbox{}\\
+本プロジェクトの内容を説明するには，ポスターだけでは足りないと判断しプレゼンテーション資料を作成することに決定した．作成にあたって，まず1名がプレゼンテーションの大まかな流れを作成し，各自作成する章を分担した．プレゼンテーション資料の作成には「Microsoft PowerPoint」というソフトウェアを使用した．また，一度完成したプレゼンテーション資料を先生にレビューしていただき，資料中のグラフの不備や内容についての助言を受けた．それを受け，文章や図の修正を行った．これにより，より見やすいプレゼンテーション資料が完成した．
+
+\bunseki{亀谷浩也}
+
+\item[原稿]\mbox{}\\
+前述のプレゼンテーション資料の作成と並行して，発表用の原稿の作成を行った．こちらも1名が大まかな流れを作成し，各自作成する章を分担した．特に楕円曲線法については，何も知らない聴衆でもわかりやすく説明できるように，専門的な用語を最小限にするように注意して作成した．何度か原稿とプレゼンテーション資料を使用しプレゼン練習を行い，伝わりにくい表現や冗長な表現を修正した．
+\end{description}
+
+\bunseki{亀谷浩也}
+
+\subsection{発表}
+発表は前後半で4人ずつに分かれ，発表を行った．それぞれが自分の担当する部分を読み上げ，その間他の3人は評価アンケート配布や，ポスターに関しての質問に対応した．発表途中にプロジェクターの電源が落ちてしまうというアクシデントがあったが，落ちている間はPCの画面を直接見せることでプレゼンを行い，他の3人で復旧作業を行った．発表後に評価アンケートの集計を行った結果、発表技術は10点中平均7.1点、発表内容は10点中7.5点だった。コメントでは内容を理解していた人と全く理解できない人が分かれていたため、さらに前提知識のない聴衆にも伝わるような内容にしていきたい。
+
+\bunseki{亀谷浩也}
+
+\chapter{後期活動内容}
+
+\bunseki{亀谷浩也}
+
+\section{理論班}
+
+\bunseki{亀谷浩也}
+
+\subsection{プログラムの検証}
+
+\bunseki{亀谷浩也}
+
+\section{プログラミング班}
+
+\bunseki{亀谷浩也}
+
+\subsection{Atkin-Morain ECPPの実装}
+
+\bunseki{亀谷浩也}
+
+\subsection{新しい改良法の調査}
+
+\bunseki{亀谷浩也}
+
+\subsubsection*{疑似的2次拡大環状での楕円曲線法の提案}
+
+\bunseki{亀谷浩也}
+
+\subsubsection*{復習種類の曲線を組み合わせた楕円曲線法の提案}
+
+\bunseki{亀谷浩也}
+
+\subsubsection*{Stage2の提案}
+
+\bunseki{亀谷浩也}
+
+\subsection{Stage2}
+
+\bunseki{亀谷浩也}
+
+\subsubsection*{基本的なStage2の実装}
+
+\begin{algorithm}[H]                   
+\caption{Basic ECM Algorithm}
+\label{alg:B}                          
+\begin{algorithmic}                  
+\REQUIRE $N$ is composite number, $E$ is elliptic curve, $P = (x_0, y_0, Z_0) \in E(Z_n)$ is initial point, $B_1$ is smoothness bound for Phase 1, $B_2$ is smoothness bound for Phase 2, $B2 \ge B1.$
+\ENSURE $q$ is factor of $N$, $1 \le q \leq N$, or FAIL.
+\STATE \bfseries{Phase 1.}
+\STATE $k \gets \prod_{p \leq B_1} p^{\log{p} B_1}$
+\STATE $Q_0 \gets kP_0$
+\STATE $q \gets \gcd(z_{Q_0},N)$
+\IF {$q \ge 1$}
+\STATE return $q$
+\ELSE
+\STATE go to Phase 2
+\ENDIF
+\STATE \bfseries{Phase 2.}
+\STATE $d \gets 1$
+\FOR {each prime $p = B_1$ to $B_2$} 
+\STATE $(x_{pQ_0},y_{pQ_0},z_{pQ_0}) \gets pQ_0$
+\STATE $d \gets d*Z_{pQ_0} (mod N)$
+\ENDFOR
+\STATE $q \gets \gcd(d,N)$
+\IF {$q \ge 1$}
+\STATE return $q$
+\ELSE
+\STATE return FAIL
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+\bunseki{亀谷浩也}
+
+\subsubsection*{Montgomely ladderを利用したStage2の提案}
+
+\bunseki{亀谷浩也}
+
+\section{広報班}
+
+\bunseki{亀谷浩也}
+
+\subsection{ウェブページの作成}
+
+\bunseki{亀谷浩也}
+
+\chapter{プロジェクト内のインターワーキング}
+\begin{itemize}
+\item 池野竜將（プロジェクトリーダー・プログラミング班）
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{(\arabic{enumi})}
+ \item 楕円曲線法の基礎を学んだ．
+ \item 大まかな作業スケジュールを作成し，進捗管理を行った．
+ \item 源と協力して前年度のECMプログラムを理解した．
+ \item 源のコーディング作業にアドバイスをした．
+ \item 理論班からのプログラミング班に関しての質問に回答し，必要があれば聞かれた内容を源に伝えた．
+ \item 中間発表会に向けて，プレゼンテーション資料・原稿の原案を作成した．
+ \item 中間発表会に向けて，「プログラミング班」の部分のプレゼンテーション資料を作成した．
+ \end{enumerate}
+ 
+\item 源啓多（プログラミング班）
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{(\arabic{enumi})}
+ \item 楕円曲線法の基礎を学んだ．
+ \item 池野と協力して前年度のECMプログラムを理解した．
+ \item ECMプログラムのバージョン管理の為，Gitを学んだ．
+ \item 前年度のECMプログラムの実装上のミス（\ref{sec:alg1}）を改善した．
+ \item ECMプログラム改善のために，新たなアルゴリズム（\ref{sec:alg2}, \ref{sec:alg3}）の実装を行った．
+ \item 中間発表会に向けて，プログラミング班のプレゼンテーション資料・原稿を作成した．
+ \item Stage2の解読・実装をいち早く進めた．
+ \item 解析班の作業を助けるためのマクロを作成した．
+ \item 広報班に協力し，ウェブページの作成の手助けをした．
+ \end{enumerate}
+ 
+\item 山下哲平（理論班）
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{(\arabic{enumi})}
+ \item 楕円曲線法の基礎を学んだ．
+ \item 伊藤・駒ヶ嶺と協力してEdwards Curveを利用したECMアルゴリズムの読解を行い，プログラミング班に提案を行った．
+ \item 伊藤・駒ヶ嶺と協力してAtkin-Morain ECPPアルゴリズムの理解に取り組んだ．
+ \item 中間発表会に向けて，「背景」の部分についてポスターをを作成した．
+ \item プログラミング班の要請でプログラムの速度について簡易的な検証を行った．
+ \item 伊藤と協力してウェブページの基本的な要素を作成した．
+ \item 最終報告書の広報班ページを作成した．
+ \end{enumerate}
+ 
+\item 伊藤有輝（理論班）
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{(\arabic{enumi})}
+ \item 楕円曲線法の基礎を学んだ．
+ \item 駒ヶ嶺と協力して，エドワーズ曲線の式が導き出される過程を学んだ．
+ \item 駒ヶ嶺・山下と協力し，Edwards Curveを利用したECMアルゴリズムの読解を行った．
+ \item 駒ヶ嶺・山下と協力し，Atkin-Morain ECPPアルゴリズムの理解に取り組み，プログラミング班に提案を行った．
+ \item 中間発表会に向けて，「理論班」の部分のプレゼンテーション資料を作成した．
+ \item 源・池野と協力し，Githubの使い方を理解して広報班に伝えた．
+ \item 山下と協力してウェブページの基本的な要素を作成した．
+ \end{enumerate}
+ 
+\item 駒ヶ嶺壮（理論班）
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{(\arabic{enumi})}
+ \item 楕円曲線法の基礎を学んだ．
+ \item 伊藤と協力して，エドワーズ曲線の式が導き出される過程を学んだ．
+ \item 山下・伊藤と協力してEdwards Curveを利用したECMアルゴリズムの読解を行った．
+ \item 山下・伊藤と協力してAtkin-Morain ECPPアルゴリズムの理解に取り組んだ．
+ \item 中間発表会に向けて，「理論班」の部分のポスターを作成した．
+ \item 広報班のウェブページ作成のため，過去の作業ログを見直し，まとめた．
+ \end{enumerate}
+ 
+\item 橋本和典（理論班）
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{(\arabic{enumi})}
+ \item 楕円曲線法の基礎を学んだ．
+ \item 千葉・亀谷と協力して入門書を読み，基礎学習を行った．
+ \item 亀谷と協力して基礎学習を簡潔にまとめた解説ノートを作成した．
+ \item 中間発表会に向けて，千葉・亀谷と協力して来るであろう質問を予測して対策を行った．
+ \item ECMの改善に直結するような文献を探した。
+ \item 中間発表会に向けて、ポスターの「理論班」の章を英訳した。
+ \item 理論班で検証を行う際に，管理者として中心となって作業した．
+ \item 行った検証の結果をまとめ，グラフ化して見やすくした．
+ \end{enumerate}
+ 
+\item 千葉大樹（理論班）
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{(\arabic{enumi})}
+ \item 楕円曲線法の基礎を学んだ．
+ \item 亀谷・橋本と協力して入門書を読み，基礎学習を行った．
+ \item 中間発表会に向けて，ECMについての英論文から重要な単語を抜粋し解説した．
+ \item 中間発表会に向けて，亀谷・橋本と協力して来るであろう質問を予測して対策を行った．
+ \item 中間発表会に向けて、ポスターの「プログラミング班」の章を英訳した。
+ \item 理論班で検証を行う際に，実際にプログラムを動かし，データを全体に共有した．
+ \end{enumerate}
+ 
+\item 亀谷浩也（理論班）
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{(\arabic{enumi})}
+ \item 楕円曲線法の基礎を学んだ．
+ \item 橋本・千葉と協力して入門書を読み，基礎学習を行った．
+ \item 橋本と協力して，基礎学習を簡潔にまとめた解説ノートを作成した．
+ \item 中間発表会に向けて，橋本・千葉と協力して来るであろう質問を予測して対策を行った．
+ \item 中間発表会に向けて、ポスターの「概要・基礎学習」の章を英訳した。
+ \item 理論班で検証を行う際に，データの管理やまとめを手伝い，橋本の補佐として活動した．
+ \end{enumerate}
+ 
+\end{itemize}
+
+\bunseki{池野竜將}
+
+\chapter{前期活動成果}
+
+
+本プロジェクトでは，理論班で理解することに成功した高速化アルゴリズムをプログラミング班に伝え，プログラミング班がそのアルゴリズムを実装することによりECMプログラムを作成した．
+
+\bunseki{千葉大樹}
+
+\section{理論班}
+
+理論班は，活動内容で示した，エドワーズ曲線においての射影座標を用いたスカラー倍楕円曲線プログラムでの変数の点の与え方のアルゴリズムの改善点を発見した．乗算の回数，除算の回数が減少したことにより素因数を発見する効率が理論上1.5倍減少したが，実装前との計算コストの実数値の比較についてはまだできていない．また，Atkin-Morain ECPPのアルゴリズムの理解をすることに成功した．これを実装することにより，ECMによって素因数pが見つかる確率は，位数があらかじめ小さな因数dを持つ曲線のみを使用した場合，ランダムに動く部分のサイズがpからp=dに減少するため因数分解に成功する確率を高めることができる．しかし，Atkin-Morain ECPPの理論については理解することができなかった．そのため，プログラミング班にはAtkin-Morain ECPPの実装のためのアルゴリズムを書き起こしレポート用紙を渡すことにより，ECM USING EDWARDS CURVEの読解を終了した．
+
+\bunseki{駒ヶ嶺壮}
+
+\section{プログラミング班}
+プログラミング班では，新たなアルゴリズムを実装し，理論上は\ref{tab:cost}のように計算量が減少することが分かった．詳細な実験は行っておらず有意な差があるかどうかは確認できていない．だが，実際に素因数分解を行った結果，処理が早くなっていることが確認できた．
+
+\begin{table}
+\begin{center}
+\caption{昨年度と今年度のプログラムの計算コストの比較}\label{tab:cost}
+\begin{tabular}{ccc}
+\hline
+& 2倍算 & 2倍算→加算\\
+\hline
+昨年度 & 3{\bf M}+4{\bf S}+1{\bf D}\footnotemark & 13{\bf M}+5{\bf S}+3{\bf D}\\
+今年度 & 3{\bf M}+4{\bf S}+1{\bf D} & 12{\bf M}+4{\bf S}+1{\bf D}\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\footnotetext{{\bf M}:乗算，{\bf S}:2乗算，{\bf D}:楕円曲線の係数a,dを用いた乗算}
+
+また，実際に巨大な合成数を分解し，昨年度のプログラムとの性能を比較することにした．評価するにあたって，2015年度に作成されたプログラムでテストに使用されていた合成数$10^{306}+1$を素因数分解することで，以前のプログラムとの比較をすることとした．2015年度のプログラムでこの合成数を分解した結果，発見されたもっとも大きな素因数は157538980319816607(21桁)であった．同様に今年改善されたプログラムで分解した結果，発見されたもっとも大きな素因数は112544281755782732673671367061(30桁)であり，より大きな素因数を見つけることができるように改善された．
+
+\bunseki{源啓多}
+
+\chapter{後期活動成果}
+
+\section{理論班}
+
+\bunseki{橋本和典}
+
+\section{プログラム班}
+
+\bunseki{橋本和典}
+
+\section{広報班}
+
+\bunseki{橋本和典}
+
+\chapter{まとめ}
+
+\section{前期活動結果}
+
+前期は参考資料，論文，担当教員の白勢先生の講義による楕円曲線法の理解から始め，楕円曲線が楕円曲線法においていつどのように使われるかを理解した．その後，理論班，プロジェクト班の2班に分かれ作業を行った．理論班は，論文，入門書の読解をし，プログラム高速化のための改善案を出すことに成功した．しかし，前期中にプログラミング班が実装することはできなかった．プログラミング班は前年度のプロジェクトで作成されたECMプログラムを理解した．その後，実装ミスの改善や，新たなアルゴリズムの実装を行い，計算コストの減少に成功した．
+
+\bunseki{千葉大樹}
+
+\section{後期の展望}
+
+後期は，理論班が作成したAtkin-Morain ECPPアルゴリズムを実装し，さらにECMプログラムの改善を図る．また，大きな合成数の分解を続けECMNETへのランクインを目指す．加えて，前期中に活動できなかった広報について新たに班を設置し活動していく．
+
+\bunseki{橋本和典}
+
+\section{後期活動結果}
+
+\bunseki{橋本和典}
+
+\section{全体を通して}
+
+\bunseki{橋本和典}
+
+\appendix
+\chapter{新規習得技術}
+
+\begin{itemize}
+\item PARI/GPの使用
+\item Microsoft PowerPointの使用
+\item Gitの使用
+\item GitHubの使用
+\item Xeno Phiの使用
+\item functionviewの使用
+\end{itemize}
+
+\bunseki{橋本和典}
+
+\chapter{相互評価}
+
+\bunseki{橋本和典}
+
+
+
+%\backmatter
+>>>>>>> origin/master
 
 % 目次
 \tableofcontents

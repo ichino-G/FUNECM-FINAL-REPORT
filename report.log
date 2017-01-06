@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  4 JAN 2017 03:33
+=======
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  2 NOV 2016 17:33
+>>>>>>> origin/master
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -352,6 +356,7 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <20.74> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+<<<<<<< HEAD
 (Font)              scaled to size 19.9311pt on input line 20.
  (./report.toc
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
@@ -376,6 +381,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [4]
 (./background.tex
+=======
+(Font)              scaled to size 19.9311pt on input line 132.
+ (./report.toc)
+\tf@toc=\write3
+\openout3 = `report.toc'.
+
+ [3
+
+
+]
+>>>>>>> origin/master
 第1章
 ) (./goal.tex [1
 
@@ -393,6 +409,19 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 ]) (./Factivity.tex
 [3]
 第3章
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 219.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 219.
+LaTeX Font Info:    Try loading font information for U+msa on input line 219.
+(c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 219.
+
+(c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
@@ -400,8 +429,13 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+<<<<<<< HEAD
 (Font)              scaled to size 9.60999pt on input line 25.
 [4
+=======
+(Font)              scaled to size 9.60999pt on input line 224.
+ [4
+>>>>>>> origin/master
 
 ]
 Missing character: There is no ^^e2 in font cmr10!
@@ -424,7 +458,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ]) (./Fresult.tex [22]
 第6章
+
+LaTeX Warning: Reference `tab:cost' on page 15 undefined on input line 627.
+
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+<<<<<<< HEAD
 (Font)              scaled to size 6.72699pt on input line 30.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 36.
@@ -439,6 +477,22 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 36.
 [23
+=======
+(Font)              scaled to size 6.72699pt on input line 636.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 642.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 642.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 642.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 642.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 642.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 642.
+[15
+>>>>>>> origin/master
 
 ]) (./Sresult.tex [24]
 第7章
@@ -458,6 +512,7 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+<<<<<<< HEAD
 (Font)              scaled to size 4.805pt on input line 39.
 ) [30
 
@@ -471,8 +526,30 @@ Here is how much of TeX's memory you used:
  35212 string characters out of 6152776
  103867 words of memory out of 5000000
  6418 multiletter control sequences out of 15000+600000
+=======
+(Font)              scaled to size 4.805pt on input line 734.
+ [21
+
+] (./report.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2896 strings out of 493693
+ 34441 string characters out of 6152776
+ 103680 words of memory out of 5000000
+ 6404 multiletter control sequences out of 15000+600000
+>>>>>>> origin/master
  19661 words of font info for 92 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  29i,13n,26p,890b,518s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+<<<<<<< HEAD
 Output written on report.dvi (35 pages, 125848 bytes).
+=======
+Output written on report.dvi (25 pages, 72356 bytes).
+>>>>>>> origin/master
