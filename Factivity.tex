@@ -1,0 +1,227 @@
+% 両面印刷する場合は `openany' を削除する
+\documentclass[openany,11pt,papersize]{jsbook}
+
+%パッケージの読み込みなど
+\input{settings.tex}
+
+\begin{document}
+
+\chapter{前期活動内容}
+
+プロジェクトが始まった当初，ほぼ全員楕円曲線についての前提知識がなかったため，昨年も前提知識を身に着けるために使われた全員楕円曲線についての資料を全員で輪読し，理解した．その際，理解できなかったところを由良先生，白勢先生に解説してもらった．それにより，楕円曲線法のアルゴリズムを理解するためにあたっての基礎知識を学んだ．その後，プロジェクト全体をプログラムの高速化につながる理論を探し，学習してアルゴリズムをノートにまとめる理論班，理論班がノートにまとめたアルゴリズムをプログラムに実装するプログラミング班に分けてプロジェクトを進めた．
+
+\bunseki{伊藤有輝}
+
+\section{基礎学習}
+
+去年のプログラムを理解するために5月の中旬まではメンバ全員が教授の指導のもとで楕円曲線法のアルゴリズムや基礎知識ついての基礎学習を行った．具体的な内容は以下の通りである．
+\begin{description}
+ \item[有限体]\mbox{}\\ 
+	    　　$素数pに対し，0からp-1までの整数の集合\mathbb{F}_p=\{0，1，…，p-1\}を有限体と言う．\mathbb{F}_pでは四則演算が可能であり，ECMではこの範囲で考える．$
+ \item[Euclidの互除法]\mbox{}\\
+		$自然数a，b(a≧b)に対して以下の操作を繰り返し余りが0になるまで行うことによってa，bの最小公倍数を求めるものである．$
+
+\begin{algorithm}[h]                   
+\caption{Euclidean Algorithm}
+\label{alg E}                          
+\begin{algorithmic}                  
+\REQUIRE $a,b \in \mathbb{N} , \quad a,b \neq 0,\quad a\ge b$
+\ENSURE $\gcd (a,b)$
+\WHILE {$b \neq 0$}
+\STATE $q \leftarrow a/b$
+\STATE $r \leftarrow a\mod b$
+\STATE $a \leftarrow b$
+\STATE $b \leftarrow r$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+$a,bの最大公約数を\gcd (a,b)と表記できる．$
+	
+ \item[拡張Euclidの互除法]\mbox{}\\
+	$与えられた整数a，b，cに対し，未知数x，yに関する一次方程式ax+by=c$の整数解を求める問題を一次不定方程式という．ここで，$自然数a，bに関する一次不定方程式ax+by=gcd(a，b)を満たす無数の整数x，yは拡張$Euclidの互除法を用いることで効率よく求めることができる．これはEuclidの互除法で行った操作を逆に行うことで解を得る．$gcd(174，69)=3を例にとって考える．$
+
+	\begin{align*} 
+		174/69&=2*69+36 \\
+		69/36&=1*36+33　\\
+		36/33&=1*33+3 \\
+		33/3&=11 	
+ 	\end{align*}
+	となるので
+	\begin{align*} 
+	3&=36-33*1 \\
+	&=36-(69-36*1)*1 \\
+	&=69*(-1)+36*2 \\
+	&=69*(-1)+(174-69*2)*2 \\
+	&=174*2+69*(-5)
+ 	\end{align*}
+
+以上より,$174x+69y=3の解(x,y)=(2,-5)$を得ることができる。有限体$\mathbb{F}_p$において除算$a/b$を計算する場合, $pとb$は互いに素なので, 拡張Euclidの互除法により不定方程式$px + by = 1 の解(x, y)$を求めることができる。このとき$px+ by= 1$となるので, 有限体$\mathbb{F}_p$上では$by = 1となり,両辺をbで割ることで,b^−1 = y$が成立する。したがって$a ÷ b = a×b-1=a × y$と変形することで, 除算を乗算に置き換えて計算できる。プログラムにおいて、除算を乗算に置き換えることは計算量の削減につながるが、今回のプロジェクトではGMPライブラリを用いたことでこれを実装することはなかった。
+
+
+	
+\item[楕円曲線の定義方程式]\mbox{}\\
+	$a,b \in \mathbb{F}_pに対してy^2 = x^3 + ax + bで定義される曲線を素体Fp上の楕円曲線という．$
+
+\item[楕円曲線の加算・2倍算]\mbox{}\\
+	$(加算) 楕円曲線上のある2点P,Qを通る直線をℓとすると,楕円曲線と直線 \ell の3つ目の交点R’(=P×Q)のx軸に関する対称点をRとする。このとき2点P,Qの和をR=P+Qと定義し、楕円曲線の加算という。$
+	
+$(2倍算) 楕円曲線上の1点Pで加算を考えるときは2点P,Pの通る直線(=Pの接線)をℓとして考える。この時、楕円曲線と直線 \ell のP以外の交点のx軸に関する対称点をRとしたとき、R=P+P=2Pとできる。これが楕円曲線の2倍算である。
+$
+	
+\item[楕円曲線のスカラー倍]\mbox{}\\
+	$点Pと整数mを使用して，mP=P+P+P+P+・・・・+P(m個の和)と表すことができる．これを楕円曲線のスカラー倍という．$
+
+\item[楕円曲線法のアルゴリズム ]\mbox{}\\
+	$Nを素因数分解したい合成数とする．\mathbb{Z}/N\mathbb{Z}上で，楕円曲線Eを構成して，点$
+	\begin{equation}
+	P \in E(\mathbb{Z}/N\mathbb{Z})
+	\end{equation}
+	$をとる．初めにPの座標を決めてからEを構成しても良い．$
+	
+	$次に適切なB_1，L=2,3,・・・B_1の最小公倍数とする．LPの計算の過程で生じる点の座標の分母dが\gcd(N,d) \neq 1となるとNの約数を発見できる．$
+	
+	$最期まで\gcd (N,d)=1ならば，EとPを選びなおしてやり直す．適切なB_1を選ぶことで，ECMは高速な素因数分解法になることが知られている．$
+\end{description}
+以上のことを基礎学習として学んだ．以下の章ではに2班に分かれた後の理論班の活動内容を記述する．
+
+\bunseki{橋本和典}
+
+\section{理論班}
+理論班では新たなアルゴリズムを探し，プログラミング班に新たな高速化手法の提案を行った．以下に具体的な内容を述べる．
+
+\subsection{Twisted Edwards Curveの理解}
+ECMの高速化アルゴリズムを実装するにあたって，先人の知恵を得ようと思いインターネットで類似研究の論文を検索し，その論文を解読することによって高速化アルゴリズムをプログラムに導入しようと考えた．その際，Twisted Edwards Curves Revisitedというエドワーズ曲線についての英語の論文が見つかったため，私たちはこの論文を読解することにした．
+
+この論文は，最初に一般的な楕円曲線アルゴリズムより，エドワーズ曲線の方が計算コストは低く，速いスピードで素因数を求めることができるということが説明されており，そのエドワーズ曲線の数学的な理論とプログラム実装のためのアルゴリズムが書かれていた．
+
+エドワーズ曲線については基礎学習で学んでいなかったため，私たちはエドワーズ座標を学習した．その中では射影座標が使用されていた．射影座標とは一般的なの座標(x,y)に対して$x=\frac{X}{Z},y=\frac{Y}{Z}を満たすX,Y,Zを用いて（X,Y,Z）と表す座標であり，射影座標を用いると$ECMアルゴリズムを高速化することができる．具体的な定義は以下の通りである．
+
+\begin{itembox}[l]{射影座標}
+\begin{center}
+$(X,Y,Z)=(\lambda X, \lambda Y, \lambda Z)=$$(\displaystyle \frac{X}{Z}$,$\displaystyle \frac{Y}{Z}$,1) $(Z\neq0)$
+\end{center}
+\end{itembox}
+
+理論班では，この拡張エドワーズ座標の理論を学ぼうとしたが，知識が乏しく，わからない変数が出てきたため，アルゴリズムだけを理解し，定義，証明などの理論を理解することはあきらめた．
+
+\bunseki{伊藤有輝}
+
+\subsection{Atkin-Morain ECPP}
+\label{sec:ECPP}
+次にAtkin-Morain ECPPというECMの初期座標を決定するアルゴリズムの理解に励んだ.昨年度まではECMの初期座標として(2,2)を用いて,素因数分解が完了できなければ(2,3),(2,4)…といったようにY座標を1ずつ動かすようにしていたが,今年度では少しでもを因数を見つける確率を上げることが見込めるAtkin-Morain ECPPを理解することにした.Atkin-Morain ECPPでは新たな楕円曲線$T^2=S^3-8S-32の点を用意し,(S,T)=(12,40)に対してn(S,T)の座標(s,t)$を用いて以下を定める.
+
+\begin{center}
+\begin{equation}
+\alpha =\cfrac{(s-9)+1}{t+25}  ,  \beta = \cfrac{2\alpha (4\alpha +1)}{8\alpha^2-1}
+\end{equation}
+\end{center}
+これらを用いることによって、素因数分解に用いる楕円曲線の初期座標を求めることができる。具体的には以下の通りである。
+
+\begin{algorithm}[h]                   
+\caption{Atkin-Morain ECPP Algorithm}
+\label{alg ECPP}                          
+\begin{algorithmic}                  
+\REQUIRE $\alpha,\beta,s,t,\in \mathbb{N}$
+\ENSURE $(X,Y)$
+\STATE $(s,t) \leftarrow(12,40)$
+\WHILE {Prime factor is not found}
+\STATE $\alpha \leftarrow \cfrac{(s-9)+1}{t+25}$
+\STATE $\beta \leftarrow \cfrac{2\alpha (4\alpha +1)}{8\alpha^2-1}$
+\STATE $d \leftarrow \cfrac{2(2\beta -1)^2-1}{(2\beta -1)^4}$
+\STATE $E:x^2+y^2=1+dx^2y^2$
+\STATE $X \leftarrow \cfrac{(2\beta -1)(4\beta -3)}{6\beta -4}$
+\STATE $Y \leftarrow \cfrac{(2\beta-1)(t^2+50t-2s^3+27s^2-104)}{(t+3s-2)(t+s+16)}$
+\STATE Run ECM with $E:x^2+y^2=1+dx^2y^2$ and $(X,Y)$
+\STATE $(s,t) \leftarrow 2(s,t)$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+このアルゴリズムを用いると具体的には従来の1.5倍ほど高速化できる見込みであるが、これは論文上のデータである。したがって、後期はプログラム班が実装し、どのくらい速くなるかどうかを検証したいと考えている。
+
+\bunseki{伊藤有輝}
+
+\section{プログラミング班}
+プログラミング班では，昨年度のFUN-ECMプロジェクトで作成したECMプログラムをさらに高速化するために，4月から5月にかけて行った全体での基礎学習や，理論班がまとめた理論・アルゴリズムを元にプログラムを変更した．主に，射影座標やextended twisted Edwards coordinatesを用いて乗算・除算を減らすことによって高速化を図った．また，前年度のプログラムの不具合等も改善した．具体的には以下の通りである．
+
+\bunseki{源啓多}
+
+\subsection{座標変換の際の冗長なコストの削減}\label{sec:alg1}
+前年度のプロジェクトで作成されたECMプログラムでは，スカラー倍をする際の座標をアフィン座標から射影座標に変換することで計算効率を上昇させていた．このアフィン座標から射影座標への変換は複数回呼び出される為，ECMプログラムの計算コストに影響する．Algorithm \ref{alg:algP}にアルゴリズムを記す．
+
+\begin{algorithm}[H]
+\caption{Affine Coordinates to Projective Coordinates (Past ver.)}
+\label{alg:algP}                          
+\begin{algorithmic}                  
+\REQUIRE $(AX,AY)$ is Affine, $(PX,PY,PZ)$ is Projective, $N \ge 2 $
+\ENSURE $(PX,PY,PZ)$
+\STATE $Z \leftarrow Random(0 \le Z < N)$
+\IF {$Z=0$}
+\STATE $Z \leftarrow 1$
+\ENDIF
+\STATE $AX \leftarrow AX \times Z$
+\STATE $AY \leftarrow AY \times Z$
+\STATE $AX \leftarrow AX \mod N$
+\STATE $AY \leftarrow AY \mod N$
+\STATE $(PX,PY,PZ) \Leftarrow (AX,AY,Z)$
+\end{algorithmic}
+\end{algorithm}
+
+
+前述の冗長部分として乗算が2回と$mod$の計算が2回発生している．プログラミング班では，$Z$の値を1に設定することで乗算と$mod$の計算を省略できると考えた．プログラムを一通り読み直し，問題が発生しないことを確認したのち，新たなアルゴリズムを実装した．Algorithm \ref{alg:algN}に新しいアルゴリズムを示す．
+
+\begin{algorithm}[H]                   
+\caption{Affine Coordinates to Projective Coordinates (New ver.)}
+\label{alg:algN}                          
+\begin{algorithmic}                  
+\REQUIRE $(AX,AY)$ is Affine, $(PX,PY,PZ)$ is Projective, $N \le 2 $
+\ENSURE $(PX,PY,PZ)$
+\STATE $Z \leftarrow 1$
+\STATE $(PX,PY,PZ) \Leftarrow (AX,AY,Z)$
+\end{algorithmic}
+\end{algorithm}
+
+\bunseki{源啓多}
+
+\subsection{Extended twisted Edwards coordinatesの実装}\label{sec:alg2}
+前年度のプロジェクトで作成されたECMプログラムでは，twisted Edwards curveを利用している．今回のプログラミング班ではさらにextended twisted Edwards coordinatesを用いた．extended twisted Edwards coordiantesはエドワーズ曲線のスカラー倍を高速化するための座標系であり，以下で定義される補助座標Tを加えた4つの座標でスカラー倍を行う．
+
+\begin{itembox}[l]{Extended twisted Edwards coordinates}
+射影座標（X,Y,Z）をに対し，T=$\cfrac{XY}{Z}$という補助座標を加える．これをExtended twisted Edwards coordinatesと呼ぶ．
+\begin{center}
+$(X,Y,Z) \rightarrow (X,Y,T,Z)$
+\end{center}
+\end{itembox}
+\bunseki{源啓多}
+
+\subsection{楕円曲線の生成法の変更}\label{sec:alg3}
+楕円曲線法を利用したECMプログラムは，楕円曲線を生成しその座標を利用し素因数分解を行うプログラムである．また，本プロジェクトで素因数分解しようと試みている合成数は200桁前後のため，1度の試行では素因数分解できないことが多くある．よって，同じ合成数に対して複数回の試行をすることを想定してプログラムを作成する必要がある．前年度のプログラムでは，楕円曲線を生成する際に，Y値をfor文のカウンタを利用して1から順に決めるアルゴリズムを採用していた．そのため，複数回試行した際に同じ曲線を使用してしまうことが多くあり，効率が落ちていたと仮定した．そこで曲線を生成する際に使用しているY値に乱数を使用することとした．
+
+\bunseki{源啓多}
+
+\section{中間発表}
+
+\subsection{準備}
+\begin{description}
+\item[ポスター]\mbox{}\\
+初めに，前年度のプロジェクトで作成されたポスターを参考に構成を決定した．次に，概要，基礎学習，理論班，プログラミング班の4つの項目に分け，作成を分担した．ポスターの作成には「Microsoft PowerPoint」というソフトウェアを使用した．ポスターが完成次第，理論班・プログラミング班でレビューを行い，誤字脱字等を修正した．しかしポスターレビューが不十分だったため，最終的に完成したポスターで誤植が見つかってしまった．
+
+\bunseki{亀谷浩也}
+
+\item[プレゼンテーション資料]\mbox{}\\
+本プロジェクトの内容を説明するには，ポスターだけでは足りないと判断しプレゼンテーション資料を作成することに決定した．作成にあたって，まず1名がプレゼンテーションの大まかな流れを作成し，各自作成する章を分担した．プレゼンテーション資料の作成には「Microsoft PowerPoint」というソフトウェアを使用した．また，一度完成したプレゼンテーション資料を先生にレビューしていただき，資料中のグラフの不備や内容についての助言を受けた．それを受け，文章や図の修正を行った．これにより，より見やすいプレゼンテーション資料が完成した．
+
+\bunseki{亀谷浩也}
+
+\item[原稿]\mbox{}\\
+前述のプレゼンテーション資料の作成と並行して，発表用の原稿の作成を行った．こちらも1名が大まかな流れを作成し，各自作成する章を分担した．特に楕円曲線法については，何も知らない聴衆でもわかりやすく説明できるように，専門的な用語を最小限にするように注意して作成した．何度か原稿とプレゼンテーション資料を使用しプレゼン練習を行い，伝わりにくい表現や冗長な表現を修正した．
+\end{description}
+
+\bunseki{亀谷浩也}
+
+\subsection{発表}
+発表は前後半で4人ずつに分かれ，発表を行った．それぞれが自分の担当する部分を読み上げ，その間他の3人は評価アンケート配布や，ポスターに関しての質問に対応した．発表途中にプロジェクターの電源が落ちてしまうというアクシデントがあったが，落ちている間はPCの画面を直接見せることでプレゼンを行い，他の3人で復旧作業を行った．発表後に評価アンケートの集計を行った結果、発表技術は10点中平均7.1点、発表内容は10点中7.5点だった。コメントでは内容を理解していた人と全く理解できない人が分かれていたため、さらに前提知識のない聴衆にも伝わるような内容にしていきたい。
+
+\bunseki{亀谷浩也}
+
+\end{document}

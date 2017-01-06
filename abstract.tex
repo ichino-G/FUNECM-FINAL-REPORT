@@ -1,0 +1,49 @@
+% 両面印刷する場合は `openany' を削除する
+\documentclass[openany,11pt,papersize]{jsbook}
+
+%パッケージの読み込みなど
+\input{settings.tex}
+
+\begin{document}
+
+% 和文概要
+\begin{jabstract}
+　私たちのプロジェクトの目的は，より大きな桁数の素因数を見つけることである．素因数分解は，約 30年前から重要になってきている．その理由は，RSA暗号にある．RSA暗号は，安全性を2つの大きな素因数からなる合成数の素因数分解が難しいことに依存している．しかし，技術の発展とともに素因数分解が従来よりも容易になってきてしまっているため，RSA暗号が破られる可能性が高くなっている．そこで今注目されているのが楕円曲線暗号である．楕円曲線暗号は，RSA暗号と同じ鍵長で高い安全性を保障することができる．そこで私たちは素因数分解をより簡単なものとすることで，RSA暗号から楕円曲線暗号を主流とさせたい．
+
+　私たちは，大きな素因数の発見のために，色々な文献を読んでその中から素因数分解を行うプログラムの改良法を発見する理論班と，それらの理論を利用して実際にプログラムの実装・改良を行い，プログラムを高速化させるプログラム班に分かれて活動を行った．
+
+　理論班は，素因数分解がより高速に行われるようなアルゴリズムの発見を目標とした．楕円曲線法のプログラムは点の加算の繰り返しで行われるため，加算の計算コストを減らすことで高速な計算を可能とするための活動を行った．Atkin Morain ECPPを利用することで，従来の楕円曲線法よりも計算コストを削減できることを発見した．
+
+　プログラム班は，前年度に作成された素因数分解プログラムをさらに高速化することを目標とした．前年度と同様に大きな数を扱うために，任意精度演算ライブラリのGMPを使用した．また，プログラムの並列実行を行うために，並列プログラムの為のAPI であるOpenMPを導入した．前年度に実装されたエドワーズ曲線よりも効率よく計算を行うため，extended twisted Edwards coordinatesを実装した．同じ合成数に対してプログラムを実行する際の因数の発見確率をあげるために，Yの値をランダムに設定した．
+
+　また，理論班とプログラム班で情報の交換を行ったり，協力を行ったりなど，2つの班の活動により，素因数分解を高速に行うことができるプログラムが完成した．
+
+
+% 和文キーワード
+\begin{jkeyword}
+素因数分解,楕円曲線法,ECMNET,エドワーズ曲線,射影座標,RSA暗号
+\end{jkeyword}
+\bunseki{山下哲平}
+\end{jabstract}
+
+%英語の概要
+
+\begin{eabstract}
+
+~The goal of our project team is to find prime factor as large as possible. Factorizations in prime numbers have become more important since about thirteen years ago because the difficulty of factorization in prime numbers is related to Internet security. The reason lies in the RSA. The asymmetry of RSA is based on the practical difficulty of factoring the product of two large prime numbers. However, prime factorization is getting to easier by development in technology. Therefore, RSA is less secure compared to previously. That's why Elliptic Curve Cryptography (ECC) is paid more attention than RSA now. ECC ensure safety better than RSA cryptosystem with same key length.Accordingly, we make factorization in prime numbers simplify, we would like to change main cryptosystem from RSA cryptosystem to elliptic curve cryptography.
+
+~In order to find prime factor as large as possible, we divided two groups, one is “theory group” that is to read various literature and to find algorithm of factorizations in prime numbers to calculate faster, the other is “programming group” that is to make program to base on algorithm.
+
+ ~“Theory group” aims to find algorithm of factorizations in prime numbers to calculate faster. The ECM program repeats process of addition law many times over, therefore we reduced calculation. To access Atkin Morain construction, we were successful in calculation faster compared to previously.
+
+~“Programming group” aim to improve program of last year project team faster than before. To treat large number likewise last year, we used arbitrary-precision arithmetic library called GMP. Also, we parallelize the program, we introduce Open MP is API for parallel program. We implement extended twisted Edwards coordinates efficient than Edwards curve implemented last year. Also, we set random Y’s value to raise finding assembly towards same composite numbers.
+ We exchange information and cooperate “theory group” and “programming group”, we made a program that is to perform factorization in prime numbers fast.
+% 英文キーワード
+\begin{ekeyword}
+Elliptic Curve Method, prime factorization, ECMNET, Twisted Edwards Curve, Extended Twisted Edwards Coordinates, RSA cryptosystem
+\end{ekeyword}
+\bunseki{山下哲平}
+\end{eabstract}
+
+\end{document}
+

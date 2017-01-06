@@ -7,3 +7,12 @@
 *.bbl
 *.orig
 *.aux
+report.aux
+report.log
+report.toc
+report.lof
+report.lot
+abst.aux
+abst.log
+utf8tbl.o
+*~

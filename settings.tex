@@ -1,0 +1,81 @@
+% 報告書提出用スタイルファイル
+\usepackage[final]{funpro}%最終報告書
+%\usepackage[middle]{funpro}%中間報告書
+
+% 画像ファイル (EPS, EPDF, PNG) を読み込むために
+\usepackage[dvipdfmx]{graphicx,color}
+
+%数式の表示に利用するため
+\usepackage{amsmath,amssymb}
+
+%アルゴリズムの表示に利用するパッケージ
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%枠をつけるためのパッケージ
+\usepackage{ascmac}
+
+%図の位置調整パッケージ
+\usepackage{here}
+
+%付録を作成するためのパッケージ
+\usepackage{appendix}
+
+%ドキュメント管理用パッケージ
+\usepackage{docmute}
+
+
+% ここから -->
+\usepackage{calc,ifthen}
+\newcounter{hoge}
+\newcommand{\fake}[1]{\whiledo{\thehoge<70}{#1\stepcounter{hoge}}%
+  \setcounter{hoge}{0}}
+% <-- ここまで 削除してもよい
+
+
+% 年度の指定
+\thisYear{2016}
+
+% プロジェクト名
+\jProjectName{FUN-ECM プロジェクト}
+
+% [簡易版のプロジェクト名]{正式なプロジェクト名}
+% 欧文のプロジェクト名が極端に長い（2行を超える）場合は，短い記述を
+% 任意引数として渡す．
+%\eProjectName[Making Delicious curry]{How to make delicious curry of Hakodate}
+\eProjectName{FUN-ECM Project}
+
+
+% <プロジェクト番号>-<グループ名>
+\ProjectNumber{15-A}
+
+% グループ名
+\jGroupName{Aグループ}
+\eGroupName{A Group}
+
+% プロジェクトリーダ
+\ProjectLeader{1014129}{池野竜將}{Ryusuke Ikeno}
+
+% グループリーダ
+\GroupLeader  {1014129}{池野竜將}{Ryusuke Ikeno}
+
+% メンバー数
+\SumOfMembers{8}
+% グループメンバ
+\GroupMember  {1}{1014068}{駒ヶ嶺壮}{Sou Komagamine}
+\GroupMember  {2}{1014109}{伊藤有輝}{Yuki Ito}
+\GroupMember  {3}{1014129}{池野竜將}{Ryusuke Ikeno}
+\GroupMember  {4}{1014137}{千葉大樹}{Daiju Chiba}
+\GroupMember  {5}{1014164}{橋本和典}{Kazunori Hashimoto}
+\GroupMember  {6}{1014168}{山下哲平}{Teppei Yamashita}
+\GroupMember  {7}{1014209}{源啓多}{Keita Minamoto}
+\GroupMember  {8}{1013150}{亀谷浩也}{Hiroya Kametani}
+
+% 指導教員
+\jadvisor{白勢政明,由良文孝}
+% 複数人数いる場合はカンマ(,)で区切る．カンマの前後に空白は入れない．
+\eadvisor{Masaaki Shirase, Fumitaka Yura}
+
+% 論文提出日
+\jdate{2016年7月27日}
+\edate{July~27, 2016}
