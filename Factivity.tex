@@ -82,6 +82,26 @@ $
 	$次に適切なB_1，L=2,3,・・・B_1の最小公倍数とする．LPの計算の過程で生じる点の座標の分母dが\gcd(N,d) \neq 1となるとNの約数を発見できる．$
 	
 	$最後まで\gcd (N,d)=1ならば，EとPを選びなおしてやり直す．適切なB_1を選ぶことで，ECMは高速な素因数分解法になることが知られている．$
+以下に具体的なアルゴリズムを示す．
+
+\begin{algorithm}[H]                   
+\caption{Basic ECM Algorithm}
+\label{alg:B}                          
+\begin{algorithmic}                  
+\REQUIRE $N$ is composite number, $E$ is elliptic curve, $P = (x_0, y_0, Z_0) \in E(Z_n)$ is initial point, $B_1$ is smoothness bound
+\ENSURE $q$ is factor of $N$, $1 \le q \leq N$, or FAIL.
+\STATE \bfseries{Phase 1.}
+\STATE $k \gets \prod_{p \leq B_1} p^{\log{p} B_1}$
+\STATE $Q_0 \gets kP_0$
+\STATE $q \gets \gcd(z_{Q_0},N)$
+\IF {$q \ge 1$}
+\STATE return $q$
+\ELSE
+\STATE return FAIL
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
 \end{description}
 以上のことを基礎学習として学んだ．以下の章ではに2班に分かれた後の理論班の活動内容を記述する．
 
