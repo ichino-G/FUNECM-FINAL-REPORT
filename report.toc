@@ -11,10 +11,10 @@
 \contentsline {section}{\numberline {3.1}基礎学習}{4}
 \contentsline {section}{\numberline {3.2}理論班}{6}
 \contentsline {subsection}{\numberline {3.2.1}Twisted Edwards Curveの理解}{6}
-\contentsline {subsection}{\numberline {3.2.2}Atkin-Morain ECPP}{6}
-\contentsline {section}{\numberline {3.3}プログラミング班}{7}
-\contentsline {subsection}{\numberline {3.3.1}座標変換の際の冗長なコストの削減}{7}
-\contentsline {subsection}{\numberline {3.3.2}Extended twisted Edwards coordinatesの実装}{8}
+\contentsline {subsection}{\numberline {3.2.2}Atkin-Morain ECPP}{7}
+\contentsline {section}{\numberline {3.3}プログラミング班}{8}
+\contentsline {subsection}{\numberline {3.3.1}座標変換の際の冗長なコストの削減}{8}
+\contentsline {subsection}{\numberline {3.3.2}Extended twisted Edwards coordinatesの実装}{9}
 \contentsline {subsection}{\numberline {3.3.3}楕円曲線の生成法の変更}{9}
 \contentsline {section}{\numberline {3.4}中間発表}{9}
 \contentsline {subsection}{\numberline {3.4.1}準備}{9}
