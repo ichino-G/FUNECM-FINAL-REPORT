@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  6 JAN 2017 17:32
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  11 JAN 2017 14:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,45 +403,34 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 9.60999pt on input line 25.
 [4
 
-]
-Missing character: There is no ^^e2 in font cmr10!
-Missing character: There is no ^^84 in font cmr10!
-Missing character: There is no ^^93 in font cmr10!
-Missing character: There is no ^^e2 in font cmr10!
-Missing character: There is no ^^84 in font cmr10!
-Missing character: There is no ^^93 in font cmr10!
- [5]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6] [7] [8] [9]) (./Sactivity.tex [10]
+] [5] [6] [7] [8] [9]) (./Sactivity.tex [10]
 第4章
 [11
 
-] [12] [13] [14] [15] [16] [17]
+] [12] [13] [14] [15] [16] [17] [18]
 File: ./figure/ecm.png Graphic file (type bmp)
  <./figure/ecm.png>
 File: ./figure/ecm1.png Graphic file (type bmp)
  <./figure/ecm1.png>
 File: ./figure/index.png Graphic file (type bmp)
 
-<./figure/index.png> [18]
+<./figure/index.png> [19]
 File: ./figure/link.png Graphic file (type bmp)
  <./figure/link.png>
 File: ./figure/log.png Graphic file (type bmp)
- <./figure/log.png> [19]
+ <./figure/log.png> [20]
 File: ./figure/log2.png Graphic file (type bmp)
 
 <./figure/log2.png>
 File: ./figure/member.png Graphic file (type bmp)
- <./figure/member.png> [20]
+ <./figure/member.png> [21]
 File: ./figure/program.png Graphic file (type bmp)
- <./figure/program.png> [21])
-(./interworking.tex [22]
+ <./figure/program.png> [22])
+(./interworking.tex [23]
 第5章
-[23
+[24
 
-]) (./Fresult.tex [24]
+]) (./Fresult.tex [25]
 第6章
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 29.
@@ -457,28 +446,28 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 35.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 35.
-[25
+[26
 
-]) (./Sresult.tex [26]
+]) (./Sresult.tex [27]
 第7章
-) (./conclusion.tex [27
+) (./conclusion.tex [28
 
 ]
 第8章
-[28
+[29
 
-]) (./appendix.tex [29]
+]) (./appendix.tex [30]
 付録A
-[30
+[31
 
 ]
 付録B
-) (./bibliography.tex [31
+[32
 
-]
+] [33] [34]) (./bibliography.tex [35]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 39.
-) [32
+) [36
 
 ] (./report.aux)
 
@@ -486,12 +475,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2982 strings out of 493693
- 35809 string characters out of 6152776
+ 2983 strings out of 493693
+ 35827 string characters out of 6152776
  103867 words of memory out of 5000000
- 6444 multiletter control sequences out of 15000+600000
+ 6445 multiletter control sequences out of 15000+600000
  19661 words of font info for 92 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  29i,13n,26p,890b,518s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (37 pages, 129132 bytes).
+Output written on report.dvi (41 pages, 154172 bytes).

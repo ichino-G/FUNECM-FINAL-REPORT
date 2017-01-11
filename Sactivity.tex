@@ -172,6 +172,44 @@ k = \prod_{2 \leq p \leq B_1, p \in \mathbb{P}} p^{\lfloor \log{p} B_1 \rfloor}
 
 \bunseki{源啓多}
 
+\subsection{開発環境と実行環境}
+プログラムを実行する環境について記述する．前期までは，Xeon Phi 5110Pを用いてプログラムを実行していたが，Xeon E5-2640で実行した方がプログラムの実行速度が速かったため，Xeon E5-2640を主に使用することにし，Xeon Phi 5110Pは検証用に使用することにした．メインメモリについては，64GB（DDR3L-1600 8GB DIMM×8）を搭載している．コンパイラはicc 14.0.1，OpenMPのバージョンは3.1，GMPは6.0.0を使用している．コンパイル時には，最適化オプション（-O2）を指定している．
+
+\subsection{GMPについて}
+ECMをC言語で実装するにあたり，符号なし64bitの数値型であるunsigned long longを用いてもオーバーフローすることは避けられない．そのため，多倍長計算を高速に行うライブラリであるGMPを使用した．GMPで使用した関数について説明する．
+
+\begin{description}
+ \item[void mpz\_init(mpz\_t x)]\mbox{}\\ 
+mpz\_init()はmpz\_t型の変数xを初期化するための関数である．
+
+\item[void mpz\_inits(mpz\_t x, …)]\mbox{}\\ 
+　mpz\_inits()は複数のmpz\_t型の変数を初期化するための関数である．引数として与えられた変数のリストは，NULLで終端しなければならない．
+
+\item[void mpz\_clear(mpz\_t x)]\mbox{}\\ 
+　mpz\_clear()はmpz\_t型の変数xが確保していたメモリを開放するための関数である．
+
+\item[void mpz\_clears(mpz\_t x, …)]\mbox{}\\ 
+　mpz\_clears()は複数のmpz\_t型の変数が確保していたメモリを開放するための関数である．引数として与えられた変数のリストは，NULLで終端しなければならない．
+
+\item[void mpz\_set(mpz\_t rop, const mpz\_t op)]\mbox{}\\ 
+　mpz\_set()はmpz\_t型の変数の代入を行う関数である．mpz\_set\_ui()，mpz\_set\_si()，などのバージョンがあり，それぞれ第2引数がunsigned long int，signed long intになっている．mpz\_set\_str()という関数もあり，第2引数がconst char*になっており，第3引数には基数を指定する．そして，第2引数に指定した文字列を第3引数に指定した基数に基づき，整数だと解釈して第1引数に指定したmpz\_t型の変数に代入する．
+
+\item[void mpz\_add(mpz\_t rop, const mpz\_t op1, const mpz\_t op2)]\mbox{}\\ 
+　op1+op2をropに代入する．第3引数の型がunsigned long intであるmpz\_add\_uiも存在する．
+
+\item[void mpz\_sub(mpz\_t rop, const mpz\_t op1, const mpz\_t op2)]\mbox{}\\ 
+　op1-op2をropに代入する．第3引数の型がsigned long intであるmpz\_sub\_si()，unsigned long intであるmpz\_sub\_ui()も存在する．
+
+\item[void mpz\_mul(mpz\_t rop, const mpz\_t op1, const mpz\_t op2)]\mbox{}\\ 
+　op1*op2をropに代入する．第3引数の型がsigned long intであるmpz\_mul\_si()，unsigned long intであるmpz\_mul\_ui()も存在する．
+	
+\item[void mpz\_pow\_ui(mpz\_t rop, const mpz\_t base, unsigned long int exp)]\mbox{}\\ 
+　baseをexp乗し，ropに代入する．
+
+\item[void mpz\_mod(mpz\_t r, const mpz\_t n, const mpz\_t d)]\mbox{}\\ 
+　n mod dをrに代入する．
+\end{description}
+
 \section{広報班}
 広報班では，プロジェクト活動や楕円曲線法の解説を，外部に発信することにした。発信をする方法として，FUN-ECMのWEBページを制作することにした。WEBサイトを制作するにあたって後期の活動から広報班を新たに結成し，活動を行った。発信する対象は主に情報系の大学生とし，学部一年生の知識でも理解できるように楕円曲線法とその周辺の理論的な基礎知識を表記した。また，来年度以降の活動や，専門知識をもった人にむけて今年得た知識やプログラムで変更した点など，今年度の専門的な活動内容も表記した。
 \bunseki{亀谷浩也}
