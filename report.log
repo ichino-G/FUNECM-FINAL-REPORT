@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  11 JAN 2017 16:31
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  11 JAN 2017 17:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -453,24 +453,30 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 
 ]) (./Sresult.tex [27]
 第7章
-) (./conclusion.tex [28
 
-]
+Overfull \hbox (11.47212pt too wide) in paragraph at lines 18--19
+[]\OT1/cmr/m/n/10 Stage1: d = 5753073289120301773429053034949731658174195710292
+65956994954365680489 
+ []
+
+[28
+
+]) (./conclusion.tex [29]
 第8章
-[29
+[30
 
-]) (./appendix.tex [30]
+]) (./appendix.tex [31]
 付録A
-[31
+[32
 
 ]
 付録B
-[32
+[33
 
-] [33] [34]) (./bibliography.tex [35]
+] [34] [35]) (./bibliography.tex [36]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 39.
-) [36
+) [37
 
 ] (./report.aux)
 
@@ -486,4 +492,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  29i,13n,26p,890b,530s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (41 pages, 158728 bytes).
+Output written on report.dvi (42 pages, 160988 bytes).
