@@ -75,12 +75,12 @@ Atkin-Morain ECPPを実装後，私たちは楕円曲線上の点のスカラー
 \REQUIRE $P, n$bit integer $k = {\displaystyle \Sigma_{i=0 \rightarrow n-1}}k_j 2^j$,$k_j \in \{0,1\}$
 \ENSURE $Q = kP$
 \STATE $P_1 \leftarrow P$
-\FOR {$i = 2$ to $m-1$}
-\STATE $P_i \leftarrow P_{i-1} + P$
-\ENDFOR
+%\FOR {$i = 2$ to $m-1$}
+%\STATE $P_i \leftarrow P_{i-1} + P$
+%\ENDFOR
 \STATE $Q \leftarrow 0$
 \FOR {$j=d-1$ to $0$ by $-1$}
-\STATE $Q \leftarrow mQ$
+\STATE $Q \leftarrow 2Q$
 \STATE $Q \leftarrow Q+P_{k_j}$
 \ENDFOR
 \end{algorithmic}
@@ -157,7 +157,7 @@ k = \prod_{2 \leq p \leq B_1, p \in \mathbb{P}} p^{\lfloor \log{p} B_1 \rfloor}
 \end{center}
 \end{itembox}
 
-前述の式で求めた$ｋを利用してｋP$を計算し，$ｋPのx$座標と合成数の最大公約数をとる．その結果最大公約数が1でなければ素因数分解が成功したことになる．しかし，Stage1だけでは，$B_1$より大きい素数を1つだけ$kP$にかけていれば，素因数が求まった，ということが起こりうる．Stage2は，これの頻度を減らすためのアルゴリズムである．Stage2のための新たなパラメータ$B_2(> B_1)$を設定し，$B_1より大きく，B_2$以下の素数$p’$それぞれをStage1の計算結果kPにかけ，それぞれの$p’(kP)$のx座標と合成数Nの最大公約数を計算する．もし計算結果が1でなければ，素因数が求められたことになる．
+前述の式で求めた$k$を利用して$kP$を計算し，$kP$の$x$座標と合成数の最大公約数をとる．その結果最大公約数が1でなければ素因数分解が成功したことになる．しかし，Stage1だけでは，$B_1$より大きい素数を1つだけ$kP$にかけていれば，素因数が求まった，ということが起こりうる．Stage2は，これの頻度を減らすためのアルゴリズムである．Stage2のための新たなパラメータ$B_2(> B_1)$を設定し，$B_1$より大きく，$B_2$以下の素数$p'$それぞれをStage1の計算結果$kP$にかけ，それぞれの$p'(kP)$の$x$座標と合成数Nの最大公約数を計算する．もし計算結果が1でなければ，素因数が求められたことになる．
 \bunseki{源啓多}
 
 \subsubsection*{基本的なStage2の実装}

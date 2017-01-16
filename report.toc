@@ -2,79 +2,83 @@
 \contentsline {section}{\numberline {1.1}本プロジェクトの背景}{1}
 \contentsline {section}{\numberline {1.2}ECM-NETとは}{1}
 \contentsline {section}{\numberline {1.3}課題の概要}{1}
-\contentsline {chapter}{\numberline {第2章}到達目標}{2}
-\contentsline {section}{\numberline {2.1}本プロジェクトにおける目的}{2}
-\contentsline {subsection}{\numberline {2.1.1}プログラムの高速化}{2}
-\contentsline {subsection}{\numberline {2.1.2}FUN-ECMの活動発信}{2}
-\contentsline {section}{\numberline {2.2}課題達成の為の班分け}{2}
-\contentsline {chapter}{\numberline {第3章}前期活動内容}{4}
-\contentsline {section}{\numberline {3.1}基礎学習}{4}
-\contentsline {section}{\numberline {3.2}理論班}{6}
-\contentsline {subsection}{\numberline {3.2.1}Twisted Edwards Curveの理解}{6}
-\contentsline {subsection}{\numberline {3.2.2}Atkin-Morain ECPP}{7}
-\contentsline {section}{\numberline {3.3}プログラミング班}{8}
-\contentsline {subsection}{\numberline {3.3.1}座標変換の際の冗長なコストの削減}{8}
-\contentsline {subsection}{\numberline {3.3.2}Extended twisted Edwards coordinatesの実装}{9}
-\contentsline {subsection}{\numberline {3.3.3}楕円曲線の生成法の変更}{9}
-\contentsline {section}{\numberline {3.4}中間発表}{9}
-\contentsline {subsection}{\numberline {3.4.1}準備}{9}
-\contentsline {subsection}{\numberline {3.4.2}発表}{10}
-\contentsline {chapter}{\numberline {第4章}後期活動内容}{11}
-\contentsline {section}{\numberline {4.1}理論班}{11}
-\contentsline {section}{\numberline {4.2}プログラミング班}{11}
-\contentsline {subsection}{\numberline {4.2.1}Atkin-Morain ECPPの実装}{12}
-\contentsline {subsection}{\numberline {4.2.2}スカラー倍算の高速化}{12}
-\contentsline {subsubsection}{バイナリ法}{12}
-\contentsline {subsubsection}{m進展開法}{13}
-\contentsline {subsubsection}{移動窓法}{13}
-\contentsline {subsection}{\numberline {4.2.3}Stage2}{14}
-\contentsline {subsection}{\numberline {4.2.4}開発環境と実行環境}{15}
-\contentsline {subsection}{\numberline {4.2.5}GMPについて}{16}
-\contentsline {section}{\numberline {4.3}広報班}{16}
-\contentsline {subsection}{\numberline {4.3.1}動機}{17}
-\contentsline {subsection}{\numberline {4.3.2}Webページの構成と内容}{17}
-\contentsline {subsubsection}{Top}{17}
-\contentsline {subsubsection}{About}{17}
-\contentsline {subsubsection}{History}{17}
-\contentsline {subsubsection}{Link}{18}
-\contentsline {subsection}{\numberline {4.3.3}Webページ内のファイルの説明}{18}
-\contentsline {subsubsection}{bootstrap.css}{18}
-\contentsline {subsubsection}{bootstrap.min.css}{18}
-\contentsline {subsubsection}{jquery.bxslider.css}{18}
-\contentsline {subsubsection}{jsxgraph.css}{18}
-\contentsline {subsubsection}{original.css}{18}
-\contentsline {subsubsection}{bootstrap.js}{18}
-\contentsline {subsubsection}{bootstrap.min.js}{18}
-\contentsline {subsubsection}{jquery.bxslider.min.js}{18}
-\contentsline {subsubsection}{jquery.js}{18}
-\contentsline {subsubsection}{jquery.min.js}{19}
-\contentsline {subsubsection}{jsxgraphcore.js，GeonextReader.js}{19}
-\contentsline {subsubsection}{ecm.html}{19}
-\contentsline {subsubsection}{ecm1.html}{19}
-\contentsline {subsubsection}{index.html}{20}
-\contentsline {subsubsection}{link.html}{20}
-\contentsline {subsubsection}{log.html}{20}
-\contentsline {subsubsection}{log2.html}{21}
-\contentsline {subsubsection}{member.html}{21}
-\contentsline {subsubsection}{program.html}{22}
-\contentsline {subsection}{\numberline {4.3.4}展望}{22}
-\contentsline {section}{\numberline {4.4}成果発表}{23}
-\contentsline {subsection}{\numberline {4.4.1}準備}{23}
-\contentsline {subsection}{\numberline {4.4.2}発表}{23}
-\contentsline {chapter}{\numberline {第5章}プロジェクト内のインターワーキング}{24}
-\contentsline {chapter}{\numberline {第6章}前期活動成果}{26}
-\contentsline {section}{\numberline {6.1}理論班}{26}
-\contentsline {section}{\numberline {6.2}プログラミング班}{26}
-\contentsline {chapter}{\numberline {第7章}後期活動成果}{28}
-\contentsline {section}{\numberline {7.1}理論班}{28}
-\contentsline {section}{\numberline {7.2}プログラム班}{28}
-\contentsline {section}{\numberline {7.3}広報班}{28}
-\contentsline {chapter}{\numberline {第8章}まとめ}{30}
-\contentsline {section}{\numberline {8.1}前期活動結果}{30}
-\contentsline {section}{\numberline {8.2}後期の展望}{30}
-\contentsline {section}{\numberline {8.3}後期活動結果}{30}
-\contentsline {section}{\numberline {8.4}全体を通して}{30}
-\contentsline {section}{\numberline {8.5}今後の課題と展望}{31}
-\contentsline {chapter}{\numberline {付録A}新規習得技術}{32}
-\contentsline {chapter}{\numberline {付録B}相互評価}{33}
-\contentsline {chapter}{参考文献}{37}
+\contentsline {chapter}{\numberline {第2章}到達目標}{3}
+\contentsline {section}{\numberline {2.1}本プロジェクトにおける目的}{3}
+\contentsline {subsection}{\numberline {2.1.1}プログラムの高速化}{3}
+\contentsline {subsection}{\numberline {2.1.2}FUN-ECMの活動発信}{3}
+\contentsline {section}{\numberline {2.2}課題達成の為の班分け}{3}
+\contentsline {chapter}{\numberline {第3章}前期活動内容}{5}
+\contentsline {section}{\numberline {3.1}基礎学習}{5}
+\contentsline {section}{\numberline {3.2}理論班}{7}
+\contentsline {subsection}{\numberline {3.2.1}Twisted Edwards Curveの理解}{7}
+\contentsline {subsection}{\numberline {3.2.2}Atkin-Morain ECPP}{8}
+\contentsline {subsection}{\numberline {3.2.3}入門書の理解}{9}
+\contentsline {section}{\numberline {3.3}プログラミング班}{9}
+\contentsline {subsection}{\numberline {3.3.1}座標変換の際の冗長なコストの削減}{9}
+\contentsline {subsection}{\numberline {3.3.2}Extended twisted Edwards coordinatesの実装}{10}
+\contentsline {subsection}{\numberline {3.3.3}楕円曲線の生成法の変更}{10}
+\contentsline {section}{\numberline {3.4}中間発表}{11}
+\contentsline {subsection}{\numberline {3.4.1}準備}{11}
+\contentsline {subsection}{\numberline {3.4.2}発表}{11}
+\contentsline {chapter}{\numberline {第4章}後期活動内容}{12}
+\contentsline {section}{\numberline {4.1}理論班}{12}
+\contentsline {subsection}{\numberline {4.1.1}活動目的}{12}
+\contentsline {subsection}{\numberline {4.1.2}活動内容}{12}
+\contentsline {subsection}{\numberline {4.1.3}検証結果}{13}
+\contentsline {section}{\numberline {4.2}プログラミング班}{13}
+\contentsline {subsection}{\numberline {4.2.1}Atkin-Morain ECPPの実装}{13}
+\contentsline {subsection}{\numberline {4.2.2}スカラー倍算の高速化}{13}
+\contentsline {subsubsection}{バイナリ法}{14}
+\contentsline {subsubsection}{m進展開法}{14}
+\contentsline {subsubsection}{移動窓法}{15}
+\contentsline {subsection}{\numberline {4.2.3}Stage2}{16}
+\contentsline {subsection}{\numberline {4.2.4}開発環境と実行環境}{17}
+\contentsline {subsection}{\numberline {4.2.5}GMPについて}{18}
+\contentsline {section}{\numberline {4.3}広報班}{18}
+\contentsline {subsection}{\numberline {4.3.1}動機}{19}
+\contentsline {subsection}{\numberline {4.3.2}Webページの構成と内容}{19}
+\contentsline {subsubsection}{Top}{19}
+\contentsline {subsubsection}{About}{19}
+\contentsline {subsubsection}{History}{19}
+\contentsline {subsubsection}{Link}{20}
+\contentsline {subsection}{\numberline {4.3.3}Webページ内のファイルの説明}{20}
+\contentsline {subsubsection}{bootstrap.css}{20}
+\contentsline {subsubsection}{bootstrap.min.css}{20}
+\contentsline {subsubsection}{jquery.bxslider.css}{20}
+\contentsline {subsubsection}{jsxgraph.css}{20}
+\contentsline {subsubsection}{original.css}{20}
+\contentsline {subsubsection}{bootstrap.js}{20}
+\contentsline {subsubsection}{bootstrap.min.js}{20}
+\contentsline {subsubsection}{jquery.bxslider.min.js}{20}
+\contentsline {subsubsection}{jquery.js}{20}
+\contentsline {subsubsection}{jquery.min.js}{21}
+\contentsline {subsubsection}{jsxgraphcore.js，GeonextReader.js}{21}
+\contentsline {subsubsection}{ecm.html}{21}
+\contentsline {subsubsection}{ecm1.html}{21}
+\contentsline {subsubsection}{index.html}{22}
+\contentsline {subsubsection}{link.html}{22}
+\contentsline {subsubsection}{log.html}{22}
+\contentsline {subsubsection}{log2.html}{23}
+\contentsline {subsubsection}{member.html}{23}
+\contentsline {subsubsection}{program.html}{24}
+\contentsline {subsection}{\numberline {4.3.4}展望}{24}
+\contentsline {section}{\numberline {4.4}成果発表}{25}
+\contentsline {subsection}{\numberline {4.4.1}準備}{25}
+\contentsline {subsection}{\numberline {4.4.2}発表}{25}
+\contentsline {chapter}{\numberline {第5章}プロジェクト内のインターワーキング}{26}
+\contentsline {chapter}{\numberline {第6章}前期活動成果}{28}
+\contentsline {section}{\numberline {6.1}理論班}{28}
+\contentsline {section}{\numberline {6.2}プログラミング班}{28}
+\contentsline {chapter}{\numberline {第7章}後期活動成果}{30}
+\contentsline {section}{\numberline {7.1}理論班}{30}
+\contentsline {section}{\numberline {7.2}プログラム班}{30}
+\contentsline {section}{\numberline {7.3}広報班}{30}
+\contentsline {chapter}{\numberline {第8章}まとめ}{32}
+\contentsline {section}{\numberline {8.1}前期活動結果}{32}
+\contentsline {section}{\numberline {8.2}後期の展望}{32}
+\contentsline {section}{\numberline {8.3}後期活動結果}{32}
+\contentsline {section}{\numberline {8.4}全体を通して}{32}
+\contentsline {section}{\numberline {8.5}今後の課題と展望}{33}
+\contentsline {chapter}{\numberline {付録A}新規習得技術}{34}
+\contentsline {chapter}{\numberline {付録B}相互評価}{35}
+\contentsline {chapter}{参考文献}{39}

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  11 JAN 2017 17:05
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.sjis) (TeX Live 2016/W32TeX) (preloaded format=platex 2016.7.13)  16 JAN 2017 16:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -380,10 +380,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [4]
 (./background.tex
 第1章
-) (./goal.tex [1
+[1
 
 
-]
+]) (./goal.tex [2]
 第2章
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 22.
 (c:/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
@@ -391,10 +391,10 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
- [2
+ [3
 
 ]) (./Factivity.tex
-[3]
+[4]
 第3章
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 25.
@@ -404,36 +404,36 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 9.60999pt on input line 25.
-[4
+[5
 
-] [5] [6] [7] [8] [9]) (./Sactivity.tex [10]
+] [6] [7] [8] [9] [10]) (./Sactivity.tex [11]
 第4章
-[11
+[12
 
-] [12] [13] [14] [15] [16] [17] [18]
+] [13] [14] [15] [16] [17] [18] [19] [20]
 File: ./figure/ecm.png Graphic file (type bmp)
  <./figure/ecm.png>
 File: ./figure/ecm1.png Graphic file (type bmp)
- <./figure/ecm1.png>
-File: ./figure/index.png Graphic file (type bmp)
 
-<./figure/index.png> [19]
+<./figure/ecm1.png>
+File: ./figure/index.png Graphic file (type bmp)
+ <./figure/index.png> [21]
 File: ./figure/link.png Graphic file (type bmp)
  <./figure/link.png>
 File: ./figure/log.png Graphic file (type bmp)
- <./figure/log.png> [20]
+
+<./figure/log.png> [22]
 File: ./figure/log2.png Graphic file (type bmp)
-
-<./figure/log2.png>
+ <./figure/log2.png>
 File: ./figure/member.png Graphic file (type bmp)
- <./figure/member.png> [21]
+ <./figure/member.png> [23]
 File: ./figure/program.png Graphic file (type bmp)
- <./figure/program.png> [22])
-(./interworking.tex [23]
-第5章
-[24
 
-]) (./Fresult.tex [25]
+<./figure/program.png> [24]) (./interworking.tex [25]
+第5章
+[26
+
+]) (./Fresult.tex [27]
 第6章
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 29.
@@ -449,9 +449,9 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 35.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 35.
-[26
+[28
 
-]) (./Sresult.tex [27]
+]) (./Sresult.tex [29]
 第7章
 
 Overfull \hbox (11.47212pt too wide) in paragraph at lines 18--19
@@ -459,24 +459,24 @@ Overfull \hbox (11.47212pt too wide) in paragraph at lines 18--19
 65956994954365680489 
  []
 
-[28
-
-]) (./conclusion.tex [29]
-第8章
 [30
 
-]) (./appendix.tex [31]
-付録A
+]) (./conclusion.tex [31]
+第8章
 [32
+
+]) (./appendix.tex [33]
+付録A
+[34
 
 ]
 付録B
-[33
+[35
 
-] [34] [35]) (./bibliography.tex [36]
+] [36] [37]) (./bibliography.tex [38]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 39.
-) [37
+) [39
 
 ] (./report.aux)
 
@@ -492,4 +492,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  29i,13n,26p,890b,530s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (42 pages, 160988 bytes).
+Output written on report.dvi (44 pages, 167268 bytes).
